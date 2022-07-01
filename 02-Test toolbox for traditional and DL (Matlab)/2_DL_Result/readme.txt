@@ -1,0 +1,1 @@
+This folder cotains the outcomes of the 8 DL methods on QB, WV2, WV3 and WV4 sensors.

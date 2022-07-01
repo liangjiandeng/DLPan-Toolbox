@@ -1,0 +1,1 @@
+This folder stores the visual ouput with .eps format, which can be used in your latex editing.
