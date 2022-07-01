@@ -1,0 +1,80 @@
+#################################################################################
+#File Name: README 
+#Last Modification Date:        9/1/94     10:11:28
+#Current Version: README   1.5
+#File Creation Date: Wed Aug 25 09:25:06 1993 
+#Author: Ramesh Gopinath  <ramesh@dsp.rice.edu>  
+#
+#Copyright: All software, documentation, and related files in this distribution
+#           are Copyright (c) 1993  Rice University
+#
+#Permission is granted for use and non-profit distribution providing that this
+#notice be clearly maintained. The right to distribute any portion for profit
+#or as part of any commercial product is specifically reserved for the author.
+#
+#Change History:
+#
+#################################################################################
+This "rice-wlet-tools", version 2.01
+Released - <Mon Apr 18 16:51:38 1994>
+
+INSTALLATION: 
+To install this distribution of wlet-tools see INSTALL.
+
+SOURCE:
+     ftp:    cml.rice.edu (128.42.62.23) /pub/software
+     mosaic: URL http://jazz.rice.edu
+
+Associated references can be obtained from directory
+/pub/dsp/papers and /pub/reports
+
+EMAIL: 
+For bug reports and questions send email to webmaster-dsp@ece.rice.edu
+
+CONDITIONS FOR USE:
+       This software is Copyright (C) Rice University 1993.
+	You have the right to use, free of charge, with the following terms 
+        and conditions:
+
+      (1) You can redistribute this software in source form.  If you
+            redistribute this software in compiled form you will include
+            the source code.
+      (2) You can distribute your own applications that link this software
+            if you include the source code for this software.
+      (3) You own full rights to any output files you generate with this
+            software.
+      (4) You can make modifications to this software and use it for
+            in-house use only.  Under no circumstances can modified software
+            be redistributed.
+      (5) If you make any modifications to this software you will send
+            the changes by email to webmaster-dsp@ece.rice.edu
+      (6) The DSP group at Rice University shall be credited should
+            this software be used in in any form or written about in any
+            publication.
+      (7) This software is provided "as is", without warranty by Rice University.
+     	    In no event shall Rice University be liable for any loss or for any
+            indirect, special, punitive, exemplary, incidental, or
+            consequential damages arising from the use, possession or
+            performance of this software.
+
+---------
+ALTERNATIVE WAY OF GETTING TO SOFTWARE AND REPORTS
+(THIS MIGHT BE DISCONTINUED SINCE IT IS NOT ROBUST):
+     It can also be obtained (usually) with the following command on unix systems:
+
+     %telnet dsp.rice.edu 5555 |sed '1,3d' | csh -fbs software
+ OR  %telnet 128.42.4.62 5555 |sed '1,3d' | csh -fbs software
+
+You probably want to add
+
+	alias riceget "telnet 128.42.4.62 5555 |sed '1,3d' | csh -fsb"
+
+so that you can access the distribution (which will hopefully be updated periodically)
+
+	%riceget OPTIONS
+
+where options is a list of options. 
+
+	%riceget help
+
+would return all options currently available.

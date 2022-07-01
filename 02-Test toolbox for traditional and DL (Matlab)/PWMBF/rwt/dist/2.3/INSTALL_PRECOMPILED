@@ -1,0 +1,16 @@
+Installation instructions
+-------------------------
+
+In order to install this distribution of Rice Wavelet Tools version 2.3
+released - <Dec 1 2000>
+
+1. Make a toolbox directory and uncompress/extract all the files.
+   For example, in the unix environment,
+
+   	gunzip rwt.tar.gz
+   	tar xvf rwt.tar
+
+2. Add the toolbox directory to your Matlab path.
+
+3. For further instructions, please refer to the README file.
+

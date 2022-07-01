@@ -1,0 +1,43 @@
+Rice Wavelet Tools version 2.3
+Released - <Dec 1 2000>
+
+NEWER VERSION:
+     A newer version of this toolbox is available at 
+     http://www.dsp.rice.edu/software/rwt.shtml
+
+INSTALLATION: 
+To install this distribution of Rice Wavelet Tools see the INSTALL file.
+
+SOURCE:
+     www.dsp.rice.edu/software/rwt.shtml
+
+EMAIL: 
+For bug reports and questions, send email to webmaster-dsp@ece.rice.edu
+
+CONDITIONS FOR USE:
+See the LICENSE file
+
+TOOLBOX FUNCTIONS:
+
+ Wavelet Transforms
+     mdwt - Discrete orthogonal wavelet transform using the Mallat algorithm (1D and 2D)
+     midwt - Inverse discrete orthogonal wavelet transform
+     mrdwt - Undecimated (redundant) discrete wavelet transform (1D and 2D)
+     mirdwt - Inverse undecimated discrete wavelet transform
+     daubcqf - Daubechies filter coefficients
+
+ Wavelet Domain Processing
+     denoise - Denoise signals and images by thresholding wavelet coefficients
+     HardTh - Hard thresholding
+     SoftTh - Soft thresholding
+
+ Other
+     makesig - Create Donoho-Johnstone test signals
+     compile - Compile the Rice Wavelet Toolbox
+
+Functions omitted in this version of toolbox can be found in 
+version 2.01 at www.dsp.rice.edu/software/RWT2.01/RWT-2.01.tar.Z
+
+This version may not compile with Matlab 6.0 (Release 12) and above. 
+This problem has been fixed in version 2.4 at
+www.dsp.rice.edu/software/rwt.shtml

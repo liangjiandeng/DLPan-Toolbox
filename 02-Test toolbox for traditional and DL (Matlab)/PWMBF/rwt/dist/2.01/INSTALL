@@ -1,0 +1,60 @@
+#################################################################################
+#File Name: INSTALL 
+#Last Modification Date:        11/16/95     10:30:38
+#Current Version: INSTALL   1.13
+#File Creation Date: Wed Aug 25 09:25:06 1993 
+#Author: Ramesh Gopinath  <ramesh@dsp.rice.edu>  
+#
+#Copyright: All software, documentation, and related files in this distribution
+#           are Copyright (c) 1993-1995 Rice University
+#
+#Permission is granted for use and non-profit distribution providing that this
+#notice be clearly maintained. The right to distribute any portion for profit
+#or as part of any commercial product is specifically reserved for the author.
+#
+#Change History:
+#
+#################################################################################
+In order to install this distribution of wlet-tools:
+
+1. Uncompress and extract the tar archive in the desired directory. 
+
+   uncompress RWT.tar.Z
+   tar xvf RWT.tar
+
+   NOTE: New subdirectories (rice-wlet-tools and rice-atr-tools) will
+   be generated in directory where you extract the archive.
+
+2. cd rice-wlet-tools
+
+3. make all
+
+4. make install
+
+5. Append the paths to the mex, mfile and wdemo directories. That is,
+	in .cshrc add the following lines at the end:
+
+   setenv RWT_HOME YOUR/LOCAL/PATH/TO
+   setenv RWT_PATH $RWT_HOME/rice-wlet-tools/mex:$RWT_HOME/rice-wlet-tools/mfiles:\
+	$RWT_HOME/rice-wlet-tools/wdemos:$RWT_HOME/rice-atr-tools/mex:\
+	$RWT_HOME/rice-atr-tools/mfiles:$RWT_HOME/rice-atr-tools/sardemo:\
+	$RWT_HOME
+   setenv MATLABPATH $RWT_PATH':'$MATLABPATH
+
+	where 
+
+	YOUR/LOCAL/PATH/TO
+
+		 is replaced with
+	
+	the actual path to the directory where rice-wlet-tools and
+	rice-atr-tools are located on your system
+
+   NOTE: If you do not have the environment variable MATLABPATH previously defined
+   change the line
+
+   setenv MATLABPATH $RWT_PATH':'$MATLABPATH
+
+   to
+
+   setenv MATLABPATH $RWT_PATH
