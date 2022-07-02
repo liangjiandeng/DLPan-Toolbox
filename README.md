@@ -2,7 +2,7 @@
 
 * This is a deep learning (DL) toolbox for pansharpening, which can be used for your training anda testing, and easily get the comparison of traditional and DL methdos.
 
-* You may find the relate [paper](https://liangjiandeng.github.io/)
+* You may find the relate [paper](https://liangjiandeng.github.io/) which will be published in IEEE Geoscience and Remote Sensing Magazine, 2022.
 
 
 
