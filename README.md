@@ -1,6 +1,6 @@
 # DLPan-Toolbox
 
-** This is a deep learning (DL) toolbox for pansharpening
+### This is a deep learning (DL) toolbox for pansharpening
 
 
 
