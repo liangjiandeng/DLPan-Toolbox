@@ -3,6 +3,16 @@
 ** This is a deep learning (DL) toolbox for pansharpening
 
 
+
+## Introduction
+- Directly run: ``demo_Pleiades_test.m`` for a Pleiades example
+- Directly run: ``demo_WV3_test.m`` for a WV3 example
+
+
+
+
+
+
 ## Citation
 ```bibtex
 @ARTICLE{deng2022grsm,
@@ -13,8 +23,3 @@ year={2022},
 pages={},
 }
 ```
-
-
-# How to use?
-- Directly run: ``demo_Pleiades_test.m`` for a Pleiades example
-- Directly run: ``demo_WV3_test.m`` for a WV3 example
