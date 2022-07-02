@@ -3,7 +3,7 @@
 ** This is a deep learning (DL) toolbox for pansharpening
 
 
-# Citation
+## Citation
 ```bibtex
 @ARTICLE{deng2022grsm,
 author={L.-J. Deng, G. Vivone, M. E. Paoletti, G. Scarpa, J. He, Y. Zhang, J. Chanussot, and A. Plaza},
