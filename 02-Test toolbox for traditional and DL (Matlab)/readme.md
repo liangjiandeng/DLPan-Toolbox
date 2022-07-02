@@ -15,7 +15,7 @@ This repository is the official Matlab implementation of our IEEE GRSM paper “
 
 ## Quick Start
 
-# Full-resolution Evaluation.** 
+### Full-resolution Evaluation
 
 * Directly run ``Demo_Full_Resolution.m`` which includes an WV3 example. After running this demo, readers can understand the whole procedure.
 
