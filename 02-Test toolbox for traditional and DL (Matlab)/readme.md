@@ -19,9 +19,12 @@ This repository is the official Matlab implementation of our IEEE GRSM paper “
 
 * Directly run ``Demo_Full_Resolution.m`` which includes an WV3 example. After running this demo, readers can understand the whole procedure.
 
-> Directly run ``Demo_Full_Resolution.m`` which includes an WV3 example. After running this demo, readers can understand the whole procedure.
 
->git clone https://github.com/XiaoXiao-Woo/PanCollection
+
+
+**Reduced-resolution Evaluation.** 
+
+* Directly run ``Demo_Reduced_Resolution.m`` which includes an WV3 example. After running this demo, readers can understand the whole procedure.
 
 
 **Others**
