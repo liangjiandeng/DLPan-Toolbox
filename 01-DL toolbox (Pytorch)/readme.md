@@ -120,6 +120,8 @@ Please cite this project if you use datasets or the toolbox in your research.
 
 ## Acknowledgement
 - [MMCV](https://github.com/open-mmlab/mmcv): OpenMMLab foundational library for computer vision.
+- We appreciate the great contribution of [Xiao Wu](https://xiaoxiao-woo.github.io/) who is a graduate student in [UESTC](https://www.uestc.edu.cn/) to this toolbox.
+
 
 ## License & Copyright
 This project is open sourced under GNU General Public License v3.0.
