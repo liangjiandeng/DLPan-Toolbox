@@ -12,7 +12,7 @@ This toolbox mainly contains two parts: one is the pytorch source codes for the 
 
 
 
-<img src="overview.png" width = "50%" />
+<img src="overview.png" width = "90%" />
 
 
 ## Citation
