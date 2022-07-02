@@ -7,12 +7,14 @@
 ## Introduction
 This toolbox mainly contains two parts: one is the pytorch source codes for the eight DL-based methods in the paper (i.e., the folder of "01-DL toolbox (Pytorch)"); the other is the Matlab source codes which could simultaneously evaluate the performance of traditional and DL approaches in a uniformed framework ("02-Test toolbox for traditional and DL (Matlab)"). Please see more details:
 
-- 01-DL toolbox (Pytorch): ``demo_Pleiades_test.m`` for a Pleiades example
-- 02-Test toolbox for traditional and DL (Matlab): ``demo_WV3_test.m`` for a WV3 example
+- 01-DL toolbox (Pytorch): contains source codes of DL methods, you may check the ``readme`` file for the usage.
+- 02-Test toolbox for traditional and DL (Matlab): contains Matlab source codes for simultaneously evaluating traditional and DL approaches and outputing results, you may check the ``readme`` file for the usage.
 
+Note that, readers also could check the structure and relationship of these two folders in the following ``overview`` figure (also see it in the respository).
 
 
 <img src="overview.png" width = "90%" />
+
 
 
 ## Citation
