@@ -27,32 +27,61 @@ This repository is the official Matlab implementation of our IEEE GRSM paper “
   
 * Once you have above datasets, you can run this demo successfully, then understand how this demo run!
 
-**Reduced-resolution Evaluation.** 
+
+
+
+### Reduced-resolution Evaluation
 
 * Directly run ``Demo_Reduced_Resolution.m`` which includes an WV3 example. After running this demo, readers can understand the whole procedure.
 
-
-**Others**
-* if you want to add customized datasets, you need to update:
-
-```
-01-DL toolbox (Pytorch)/UDL/AutoDL/__init__.py.
-01-DL toolbox (Pytorch)/UDL/pansharpening/common/psdata.py.
-```
-
+* Note: the test dataset of reduced-resolution are too huge to upload to GitHub, thus we provide cloud links to readers to download them to
+  successfully run this demo, including:
+  - i) Download link for reduced-resolution WV3-NewYork example (named "NY1_WV3_RR.mat"): http:********   (put into the folder of   "1_TestData/Datasets Testing")
+  
+  - ii) Download link of DL's results for reduced-resolution WV3-NewYork example: http:********   (put into the folder of "2_DL_Result/WV3")
+  
+* Once you have above datasets, you can run this demo successfully, then understand how this demo run!
 
 
-## Contribution
-We appreciate all contributions to improving '01-DL toolbox (Pytorch)'. Looking forward to your contribution to DLPan-Toolbox.
+### Others
 
-
-## Citation
-Please cite this project if you use datasets or the toolbox in your research.
-> 
+* You may find the quantitative results from Tex files such as ``FR_Assessment.tex``, ``RR_Assessment.tex`` and ``Avg_RR_Assessment.tex``, then copy for your Latex editing.
+* You may also find the generated high-resolution eps-format figures in the folder of "3_EPS" for your Latex editing. 
 
 
 ## Acknowledgement
 - We appreciate the great contribution of [Xiao Wu](https://xiaoxiao-woo.github.io/) who is a graduate student in [UESTC](https://www.uestc.edu.cn/) to this toolbox.
+
+
+## Citation
+* If you use this toolbox, please kindly cite our paper:
+
+```bibtex
+@ARTICLE{deng2022grsm,
+author={L.-J. Deng, G. Vivone, M. E. Paoletti, G. Scarpa, J. He, Y. Zhang, J. Chanussot, and A. Plaza},
+booktitle={IEEE Geoscience and Remote Sensing Magazine},
+title={Machine Learning in Pansharpening: A Benchmark, from Shallow to Deep Networks},
+year={2022},
+pages={},
+}
+```
+
+* Also, the codes of traditional methods are from the "pansharpening toolbox for distribution", thus please cite the corresponding paper:
+```bibtex
+@ARTICLE{vivone2021grsm,
+  author={Vivone, Gemine and Dalla Mura, Mauro and Garzelli, Andrea and Restaino, Rocco and Scarpa, Giuseppe and Ulfarsson, Magnus O. and   Alparone, Luciano and Chanussot, Jocelyn},
+  journal={IEEE Geoscience and Remote Sensing Magazine}, 
+  title={A New Benchmark Based on Recent Advances in Multispectral Pansharpening: Revisiting Pansharpening With Classical and Emerging Pansharpening Methods}, 
+  year={2021},
+  volume={9},
+  number={1},
+  pages={53-81},
+  doi={10.1109/MGRS.2020.3019315}
+}
+```
+
+  
+
 
 ## License & Copyright
 This project is open sourced under GNU General Public License v3.0.
