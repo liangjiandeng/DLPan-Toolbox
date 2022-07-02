@@ -1,6 +1,6 @@
 # DLPan-Toolbox
 
-### This is a deep learning (DL) toolbox for pansharpening
+### This is a deep learning (DL) toolbox for pansharpening, which can be used for your training anda testing, and easily get the comparison of traditional and DL methdos.
 
 
 
