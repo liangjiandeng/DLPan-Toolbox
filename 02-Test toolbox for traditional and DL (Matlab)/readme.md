@@ -38,7 +38,7 @@ This repository is the official Matlab implementation of our IEEE GRSM paper “
   successfully run this demo, including:
   - i) Download link for reduced-resolution WV3-NewYork example (named "NY1_WV3_RR.mat"): same link as above i), then put into the folder of   "1_TestData/Datasets Testing"
   
-  - ii) Download link of DL's results for reduced-resolution WV3-NewYork example: same link as above i), then put into the folder of "2_DL_Result/WV3"
+  - ii) Download link of DL's results for reduced-resolution WV3-NewYork example: same link as above ii), then put into the folder of "2_DL_Result/WV3"
   
 * Once you have above datasets, you can run this demo successfully, then understand how this demo run!
 
