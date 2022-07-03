@@ -21,9 +21,9 @@ This repository is the official Matlab implementation of our IEEE GRSM paper “
 
 * Note: the test dataset of full-resolution are too huge to upload to GitHub, thus we provide cloud links to readers to download them to
   successfully run this demo, including:
-  - i) Download link for full-resolution WV3-NewYork example (named "NY1_WV3_FR.mat"): [Link](https://drive.google.com/file/d/1j1nyHuBxsNzIn-UEwZUgeziGCAFMLes9/view?usp=sharing)   (put into the folder of   "1_TestData/Datasets Testing")
+  - i) Download link for full-resolution WV3-NewYork example (named "NY1_WV3_FR.mat"): [[Link]](https://drive.google.com/file/d/1j1nyHuBxsNzIn-UEwZUgeziGCAFMLes9/view?usp=sharing)   (put into the folder of   "1_TestData/Datasets Testing")
   
-  - ii) Download link of DL's results for full-resolution WV3-NewYork example: [Link](https://drive.google.com/file/d/16FSxdq6BY7STbmMzxcxJ5atNQ7ZV3mPT/view?usp=sharing)   (put into the folder of "'2_DL_Result/WV3")
+  - ii) Download link of DL's results for full-resolution WV3-NewYork example: [[Link]](https://drive.google.com/file/d/16FSxdq6BY7STbmMzxcxJ5atNQ7ZV3mPT/view?usp=sharing)   (put into the folder of "'2_DL_Result/WV3")
   
 * Once you have above datasets, you can run this demo successfully, then understand how this demo run!
 
@@ -36,9 +36,9 @@ This repository is the official Matlab implementation of our IEEE GRSM paper “
 
 * Note: the test dataset of reduced-resolution are too huge to upload to GitHub, thus we provide cloud links to readers to download them to
   successfully run this demo, including:
-  - i) Download link for reduced-resolution WV3-NewYork example (named "NY1_WV3_RR.mat"): http:********   (put into the folder of   "1_TestData/Datasets Testing")
+  - i) Download link for reduced-resolution WV3-NewYork example (named "NY1_WV3_RR.mat"): same link as above i), then put into the folder of   "1_TestData/Datasets Testing"
   
-  - ii) Download link of DL's results for reduced-resolution WV3-NewYork example: http:********   (put into the folder of "2_DL_Result/WV3")
+  - ii) Download link of DL's results for reduced-resolution WV3-NewYork example: same link as above i), then put into the folder of "2_DL_Result/WV3"
   
 * Once you have above datasets, you can run this demo successfully, then understand how this demo run!
 
