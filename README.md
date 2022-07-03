@@ -10,7 +10,7 @@ This toolbox mainly contains two parts: one is the pytorch source codes for the 
 - 01-DL toolbox (Pytorch): contains source codes of DL methods, you may check the ``readme`` file for the usage.
 - 02-Test toolbox for traditional and DL (Matlab): contains Matlab source codes (mainly from 'Gemine et al., A New Benchmark Based on Recent Advances in Multispectral Pansharpenin: Revisiting Pansharpening With Classical and Emerging Pansharpening Methods , IEEE GRSM, 2021', see the following reference [2]) for simultaneously evaluating traditional and DL approaches and outputing results, you may check the ``readme`` file for the usage. 
 
-Note that, readers also could check the structure and relationship of these two folders in the following ``overview`` figure (also see it in the respository).
+Note that, readers also could check the structure and relationship of these two folders in the following ``overview figure`` (also find it in the respository).
 
 
 <img src="overview.png" width = "90%" />
