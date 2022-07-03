@@ -17,6 +17,8 @@ Note that, readers also could check the structure and relationship of these two 
 
 
 
+
+
 ## Citation
 * [1] If you use this toolbox, please kindly cite our paper:
 
@@ -44,3 +46,9 @@ pages={},
   doi={10.1109/MGRS.2020.3019315}
 }
 ```
+
+## Acknowledgement
+- We appreciate the great contribution of [Xiao Wu](https://xiaoxiao-woo.github.io/) and Ran Ran who are graduate students in [UESTC](https://www.uestc.edu.cn/) to this toolbox.
+
+## License & Copyright
+This project is open sourced under GNU General Public License v3.0.
