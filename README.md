@@ -2,7 +2,7 @@
 
 * This is a deep learning (DL) toolbox for pansharpening, which can be used for your training and testing, and easily get the comparison of traditional and DL methdos.
 
-* You may find the relate [[paper]](https://liangjiandeng.github.io/) (see the following referenc [1]) which will be published in IEEE Geoscience and Remote Sensing Magazine, 2022.
+* You may find the relate [[paper]]([https://liangjiandeng.github.io/](https://github.com/liangjiandeng/liangjiandeng.github.io/tree/master/papers/2022/review-grsm2022.pdf) (see the following referenc [1]) which will be published in IEEE Geoscience and Remote Sensing Magazine, 2022.
 
 ## Introduction
 This toolbox mainly contains two parts: one is the pytorch source codes for the eight DL-based methods in the paper (i.e., the folder of "01-DL toolbox (Pytorch)"); the other is the Matlab source codes which could simultaneously evaluate the performance of traditional and DL approaches in a uniformed framework ("02-Test toolbox for traditional and DL (Matlab)"). Please see more details:
