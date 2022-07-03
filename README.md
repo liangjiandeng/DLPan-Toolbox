@@ -1,6 +1,6 @@
 # DLPan-Toolbox
 
-* This is a deep learning (DL) toolbox for pansharpening, which can be used for your training anda testing, and easily get the comparison of traditional and DL methdos.
+* This is a deep learning (DL) toolbox for pansharpening, which can be used for your training and testing, and easily get the comparison of traditional and DL methdos.
 
 * You may find the relate [[paper]](https://liangjiandeng.github.io/) (see the following referenc [1]) which will be published in IEEE Geoscience and Remote Sensing Magazine, 2022.
 
