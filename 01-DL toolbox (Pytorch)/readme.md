@@ -3,7 +3,7 @@
 
 [English](https://github.com/XiaoXiao-Woo/PanCollection/edit/dev/README.md) | [简体中文](https://github.com/XiaoXiao-Woo/PanCollection/edit/dev/README_zh.md)
 
-This repository is the official PyTorch implementation of our IEEE GRSM paper “Machine Learning in Pansharpening: A Benchmark, from Shallow to Deep Networks”, 2022 ([paper](https://liangjiandeng.github.io), [homepage](https://liangjiandeng.github.io)).
+This repository is the official PyTorch implementation of our IEEE GRSM paper “Machine Learning in Pansharpening: A Benchmark, from Shallow to Deep Networks”, 2022 ([paper](https://liangjiandeng.github.io), [homepage](https://github.com/liangjiandeng/DLPan-Toolbox)).
 
 
 
@@ -20,7 +20,7 @@ Note: Our project is based on MMCV, but you needn't to install it currently.
 ## Quick Start
 **Step0.** set your Python environment.
 
->git clone https://github.com/XiaoXiao-Woo/PanCollection
+>git clone https://github.com/liangjiandeng/DLPan-Toolbox/tree/main/01-DL%20toolbox%20(Pytorch)
 
 Then, 
 
