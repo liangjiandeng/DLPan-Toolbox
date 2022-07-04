@@ -73,7 +73,9 @@ Then,
   
 	__cfg.eval__ = False, 
   
-	__cfg.workflow__ = [('train', 50), ('val', 1)], __cfg.dataset__ = {'train': 'wv3', 'val': 'wv3_multiExm.h5'}
+	__cfg.workflow__ = [('train', 50), ('val', 1)], 
+	
+	__cfg.dataset__ = {'train': 'wv3', 'val': 'valid_wv3.h5'}
 	
 * A test example:
 
@@ -93,7 +95,11 @@ Then,
    	 	 main(cfg)
 	```
   
-	__cfg.eval__ = True or __cfg.workflow__ = [('val', 1)]
+	__cfg.eval__ = True 
+	
+	or 
+	
+	__cfg.workflow__ = [('val', 1)]
 
 **Step4**. How to customize the code.
 
