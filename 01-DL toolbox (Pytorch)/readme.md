@@ -20,7 +20,7 @@ Note: Our project is based on MMCV, but you needn't to install it currently.
 ## Quick Start
 **Step0.** set your Python environment.
 
->git clone https://github.com/liangjiandeng/DLPan-Toolbox/tree/main/01-DL%20toolbox%20(Pytorch)
+>git clone https://github.com/liangjiandeng/DLPan-Toolbox/tree/main/01-DL-toolbox(Pytorch)
 
 Then, 
 
