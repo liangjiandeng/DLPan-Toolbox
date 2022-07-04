@@ -32,7 +32,7 @@ Then,
 * Verify the dataset path in `01-DL-toolbox(Pytorch)/UDL/Basis/option.py`, or you can print the output of `run_pansharpening.py`, then set __cfg.data_dir__ to your dataset path.
 
 ```
-|-$ROOT/Datasets
+|-$ROOT/Data
 ├── pansharpening
 │   ├── training_data
 │   │   ├── train_wv3.h5
