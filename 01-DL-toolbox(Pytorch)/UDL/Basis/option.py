@@ -97,9 +97,9 @@ class panshaprening_cfg(TaskDispatcher, name='pansharpening'):
 
         cfg.scale = [1]
         if platform.system() == 'Linux':
-            cfg.data_dir = '/Data/Datasets/pansharpening_2'
+            cfg.data_dir = '../Data/pansharpening'
         if platform.system() == "Windows":
-            cfg.data_dir = 'C:/Datasets/pansharpening_2'
+            cfg.data_dir = '../Data/pansharpening'
 
         cfg.best_prec1 = 10000
         cfg.best_prec5 = 10000
