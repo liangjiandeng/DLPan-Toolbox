@@ -27,9 +27,9 @@ Then,
 > python setup.py develop
 
 **Step1.**
-* Download datasets (WorldView-3, QuickBird, GaoFen2, WorldView2) from the [homepage](https://liangjiandeng.github.io/PanCollection.html). Put it with the following format. 
+* Download datasets (WorldView-3, QuickBird, GaoFen2, WorldView2) from the [homepage](https://liangjiandeng.github.io/****.html). Put it with the following format. 
 
-* Verify the dataset path in `PanCollection/UDL/Basis/option.py`, or you can print the output of `run_pansharpening.py`, then set __cfg.data_dir__ to your dataset path.
+* Verify the dataset path in `01-DL-toolbox(Pytorch)/UDL/Basis/option.py`, or you can print the output of `run_pansharpening.py`, then set __cfg.data_dir__ to your dataset path.
 
 ```
 |-$ROOT/Datasets
@@ -99,13 +99,13 @@ Then,
 
 One model is divided into three parts:
 
-1. Record hyperparameter configurations in folder of `PanCollection/UDL/pansharpening/configs/Option_modelName.py`. For example, you can load pretrained model by setting __model_path__ = "your_model_path" or __cfg.resume_from__ = "your_model_path".
+1. Record hyperparameter configurations in folder of `01-DL-toolbox(Pytorch)/UDL/pansharpening/configs/Option_modelName.py`. For example, you can load pretrained model by setting __model_path__ = "your_model_path" or __cfg.resume_from__ = "your_model_path".
 
-2. Set model, loss, optimizer, scheduler in folder of `PanCollection/UDL/pansharpening/models/modelName_main.py`.
+2. Set model, loss, optimizer, scheduler in folder of `01-DL-toolbox(Pytorch)/UDL/pansharpening/models/modelName_main.py`.
 
-3. Write a new model in folder of `PanCollection/UDL/pansharpening/models/*modelName*/model_modelName.py`.
+3. Write a new model in folder of `01-DL-toolbox(Pytorch)/UDL/pansharpening/models/*modelName*/model_modelName.py`.
 
-Note that when you add a new model into PanCollection, you need to update `PanCollection/UDL/pansharpening/models/__init__.py` and add option_modelName.py.
+Note that when you add a new model into `01-DL-toolbox(Pytorch)`, you need to update `01-DL-toolbox(Pytorch)/UDL/pansharpening/models/__init__.py` and add option_modelName.py.
 
 **Others**
 * if you want to add customized datasets, you need to update:
