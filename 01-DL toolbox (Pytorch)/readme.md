@@ -56,6 +56,18 @@ Then,
 * A training example：
 
 	run_pansharpening.py
+	
+	```python
+	   import sys
+           sys.path.append('../..')
+           from UDL.AutoDL import TaskDispatcher
+           from UDL.AutoDL.trainer import main
+
+           if __name__ == '__main__':
+           cfg = TaskDispatcher.new(task='pansharpening', mode='entrypoint', arch='BDPN')
+           print(TaskDispatcher._task.keys())
+           main(cfg)
+	 ````
   
 	where arch='BDPN', and configs/option_bdpn.py has: 
   
