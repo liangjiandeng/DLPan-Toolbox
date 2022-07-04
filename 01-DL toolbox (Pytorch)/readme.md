@@ -47,7 +47,7 @@ Then,
 │   │   │   ├── ...
 ```
 
-**Step2.** Open `PanCollection/UDL/pansharpening`,  run the following code:
+**Step2.** Open `01-DL toolbox (Pytorch)/UDL/pansharpening`,  run the following code:
 
 > python run_pansharpening.py
 
@@ -55,7 +55,7 @@ Then,
 
 * A training example：
 
-	run_pansharpening.py
+	`run_pansharpening.py`
 	
 	```python
 	   import sys
@@ -77,7 +77,21 @@ Then,
 	
 * A test example:
 
-	run_test_pansharpening.py
+	`run_test_pansharpening.py`
+	
+	```python
+		import sys
+        	sys.path.append('../..')
+		from UDL.AutoDL import TaskDispatcher
+		from UDL.AutoDL.trainer import main
+
+		if __name__ == '__main__':
+    		cfg = TaskDispatcher.new(task='pansharpening', mode='entrypoint', arch='MSDCNN')
+    		cfg.eval = True
+    		cfg.workflow = [('val', 1)]
+    		print(TaskDispatcher._task.keys())
+   	 	 main(cfg)
+	```
   
 	__cfg.eval__ = True or __cfg.workflow__ = [('val', 1)]
 
