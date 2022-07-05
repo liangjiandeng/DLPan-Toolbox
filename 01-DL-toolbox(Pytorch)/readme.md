@@ -47,7 +47,7 @@ Then,
 │   │   │   ├── ...
 ```
 
-**Step2.** Open `01-DL-toolbox(Pytorch)/UDL/pansharpening`,  run the following code:
+**Step2.** Open `01-DL-toolbox(Pytorch)/UDL/pansharpening`,  run the following code for training:
 
 > python run_pansharpening.py
 
