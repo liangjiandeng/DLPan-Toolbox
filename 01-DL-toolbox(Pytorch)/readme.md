@@ -73,19 +73,21 @@ Then,
 2) revise the corresponding setting in `configs/option_bdpn.py`, e.g., change 'valid_wv3.h5' to your validation data
 
 	```
-	   __cfg.eval__ = False, 
+	   cfg.eval = False, 
   
-       __cfg.workflow__ = [('train', 50), ('val', 1)], 
+       cfg.workflow = [('train', 50), ('val', 1)], 
 	
-	   __cfg.dataset__ = {'train': 'wv3', 'val': 'valid_wv3.h5'}
+	   cfg.dataset = {'train': 'wv3', 'val': 'valid_wv3.h5'}
 	```
 	
 
-**Step3.** How to test/infer?
-	
-* A test example:
+**Step3.** How to test?
 
-	`run_test_pansharpening.py`
+> Open `01-DL-toolbox(Pytorch)/UDL/pansharpening`,  run the following code for testing:
+
+> `run_test_pansharpening.py`
+
+> Note you need to set `cfg.eval = True` or `cfg.workflow = [('val', 1)]` in `run_test_pansharpening.py` to run
 	
 	```python
 		import sys
@@ -100,12 +102,7 @@ Then,
     		print(TaskDispatcher._task.keys())
    	 	 main(cfg)
 	```
-  
-	__cfg.eval__ = True 
-	
-	or 
-	
-	__cfg.workflow__ = [('val', 1)]
+
 
 **Step4**. How to customize the code.
 
