@@ -18,7 +18,7 @@ This repository is the official PyTorch implementation of our IEEE GRSM paper â€
 Note: Our project is based on MMCV, but you needn't to install it currently.
 
 ## Quick Start
-**Step0.** set your Python environment.
+**Step0.** Set your Python environment.
 
 >git clone https://github.com/liangjiandeng/DLPan-Toolbox/tree/main/01-DL-toolbox(Pytorch)
 
@@ -87,20 +87,20 @@ Then,
 
 > `run_test_pansharpening.py`
 
-> Note you need to set `cfg.eval = True` or `cfg.workflow = [('val', 1)]` in `run_test_pansharpening.py` to run
+> Note you need to ensure `cfg.eval = True` or `cfg.workflow = [('val', 1)]` in `run_test_pansharpening.py` to run
 	
 	```python
-		import sys
-        	sys.path.append('../..')
-		from UDL.AutoDL import TaskDispatcher
-		from UDL.AutoDL.trainer import main
+	import sys
+	sys.path.append('../..')
+	from UDL.AutoDL import TaskDispatcher
+	from UDL.AutoDL.trainer import main
 
-		if __name__ == '__main__':
-    		cfg = TaskDispatcher.new(task='pansharpening', mode='entrypoint', arch='MSDCNN')
-    		cfg.eval = True
-    		cfg.workflow = [('val', 1)]
-    		print(TaskDispatcher._task.keys())
-   	 	 main(cfg)
+	if __name__ == '__main__':
+    	cfg = TaskDispatcher.new(task='pansharpening', mode='entrypoint', arch='MSDCNN')
+    	cfg.eval = True
+    	cfg.workflow = [('val', 1)]
+    	print(TaskDispatcher._task.keys())
+   	main(cfg)
 	```
 
 
