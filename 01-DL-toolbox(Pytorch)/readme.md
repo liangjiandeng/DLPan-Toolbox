@@ -51,11 +51,11 @@ Then,
 
 **Step2.** How to train?
 
-> Open `01-DL-toolbox(Pytorch)/UDL/pansharpening`,  run the following code for training:
+> open `01-DL-toolbox(Pytorch)/UDL/pansharpening`
 
-> `python run_pansharpening.py`
+> run `python run_pansharpening.py` for training
 
-> If you want to change the network, you could: 
+> if you want to change the network, you could: 
 
 1) revise arch='BDPN' in the following codes to your network name, e.g., arch='**'; 
 
@@ -83,9 +83,9 @@ Then,
 
 **Step3.** How to test?
 
-> Open `01-DL-toolbox(Pytorch)/UDL/pansharpening`,  run the following code for testing:
+> open `01-DL-toolbox(Pytorch)/UDL/pansharpening`
 
-> `run_test_pansharpening.py`
+> run `run_test_pansharpening.py` for testing
 
 > Note you need to ensure `cfg.eval = True` or `cfg.workflow = [('val', 1)]` in the following `run_test_pansharpening.py` to run
 	  
