@@ -89,19 +89,19 @@ Then,
 
 > Note you need to ensure `cfg.eval = True` or `cfg.workflow = [('val', 1)]` in `run_test_pansharpening.py` to run
 	
-	```python
-	import sys
-	sys.path.append('../..')
-	from UDL.AutoDL import TaskDispatcher
-	from UDL.AutoDL.trainer import main
 
-	if __name__ == '__main__':
-    	cfg = TaskDispatcher.new(task='pansharpening', mode='entrypoint', arch='MSDCNN')
-    	cfg.eval = True
-    	cfg.workflow = [('val', 1)]
-    	print(TaskDispatcher._task.keys())
-   	main(cfg)
-	```
+	   ```import sys
+	   sys.path.append('../..')
+	   from UDL.AutoDL import TaskDispatcher
+	   from UDL.AutoDL.trainer import main
+
+	   if __name__ == '__main__':
+    	   cfg = TaskDispatcher.new(task='pansharpening', mode='entrypoint', arch='MSDCNN')
+    	   cfg.eval = True
+    	   cfg.workflow = [('val', 1)]
+    	   print(TaskDispatcher._task.keys())
+   	   main(cfg)```
+
 
 
 **Step4**. How to customize the code.
