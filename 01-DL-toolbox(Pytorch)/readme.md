@@ -18,7 +18,7 @@ This repository is the official PyTorch implementation of our IEEE GRSM paper â€
 Note: Our project is based on MMCV, but you needn't to install it currently.
 
 ## Quick Start
-**Step0.** Set your Python environment.
+**Step0. Set your Python environment.**
 
 >git clone https://github.com/liangjiandeng/DLPan-Toolbox/tree/main/01-DL-toolbox(Pytorch)
 
@@ -26,7 +26,7 @@ Then,
 
 > python setup.py develop
 
-**Step1.** Put datasets and set path
+**Step1. Put datasets and set path**
 * Put datasets (WorldView-3, QuickBird, GaoFen2, WorldView2) into the `UDL/Data/pansharpening`, see following path structure. 
 
 ```
@@ -49,7 +49,7 @@ Then,
 
 
 
-**Step2.** How to train?
+**Step2. How to train?**
 
 > open `01-DL-toolbox(Pytorch)/UDL/pansharpening`
 
@@ -81,7 +81,7 @@ Then,
 	```
 	
 
-**Step3.** How to test?
+**Step3. How to test?**
 
 > open `01-DL-toolbox(Pytorch)/UDL/pansharpening`
 
