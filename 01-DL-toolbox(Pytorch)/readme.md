@@ -123,24 +123,28 @@ Then,
 
 > 3) Config your hyperparameter in `UDL/pansharpening/configs/Option_modelName.py` (see other methods' configuration in the folder of `UDL/pansharpening/configs` for easy usage).
 
-> 4) train your model and infer the results, see step2 and step3 for details.
+> 4) train your model and infer your results, see __step2__ and __step3__ for details.
 
 
-**Others**
-* if you want to add customized datasets, you need to update:
+
+**Q2.** How to customized your datasets?
+
+You need to update:
 
 ```
 01-DL-toolbox(Pytorch)/UDL/AutoDL/__init__.py.
 01-DL-toolbox(Pytorch)/UDL/pansharpening/common/psdata.py.
 ```
 
-* if you want to add customized training settings, such as saving model, recording logs, and so on. you need to update:
+**Q3.**  How to customized training settings, such as saving model, recording logs, etc.?
+
+You need to update:
 
 ```
 01-DL-toolbox(Pytorch)/UDL/mmcv/mmcv/runner/hooks
 ```
 
-Note that: Don't put model/dataset/task-related files into the folder of AutoDL.
+**Note:** Don't put model/dataset/task-related files into the folder of AutoDL.
 
 * if you want to know more details of runner about how to train/test in `01-DL-toolbox(Pytorch)/UDL/AutoDL/trainer.py`, please see `01-DL-toolbox(Pytorch)/UDL/mmcv/mmcv/runner/epoch_based_runner.py`
 
