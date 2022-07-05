@@ -3,7 +3,7 @@
 
 [English]([https://github.com/XiaoXiao-Woo/PanCollection/edit/dev/README.md](https://github.com/liangjiandeng/DLPan-Toolbox/edit/main/01-DL-toolbox(Pytorch)/readme.md)) | [简体中文](https://github.com.md)
 
-This repository is the official PyTorch implementation of our IEEE GRSM paper “Machine Learning in Pansharpening: A Benchmark, from Shallow to Deep Networks”, 2022 ([paper](https://liangjiandeng.github.io), [homepage](https://github.com/liangjiandeng/DLPan-Toolbox)).
+This repository is the official PyTorch implementation of our IEEE GRSM paper “Machine Learning in Pansharpening: A Benchmark, from Shallow to Deep Networks”, 2022 ([paper](https://github.com/liangjiandeng/liangjiandeng.github.io/tree/master/papers/2022/review-grsm2022.pdf) | [homepage](https://github.com/liangjiandeng/DLPan-Toolbox)).
 
 
 
@@ -26,10 +26,8 @@ Then,
 
 > python setup.py develop
 
-**Step1.**
-* Download datasets (WorldView-3, QuickBird, GaoFen2, WorldView2) from the [homepage](https://liangjiandeng.github.io/****.html). Put it with the following format. 
-
-* Verify the dataset path in `01-DL-toolbox(Pytorch)/UDL/Basis/option.py`, or you can print the output of `run_pansharpening.py`, then set __cfg.data_dir__ to your dataset path.
+**Step1.** Put datasets and set path
+* Put datasets (WorldView-3, QuickBird, GaoFen2, WorldView2) into the `UDL/Data/pansharpening`, see following path structure. 
 
 ```
 |-$ROOT/Data
@@ -47,16 +45,20 @@ Then,
 │   │   │   ├── ...
 ```
 
-**Step2.** Open `01-DL-toolbox(Pytorch)/UDL/pansharpening`,  run the following code for training:
+* Check and revise your dataset path in `01-DL-toolbox(Pytorch)/UDL/Basis/option.py` (may not need to revise), or you can print the output of `run_pansharpening.py`, then set __cfg.data_dir__ to your dataset path.
 
-> python run_pansharpening.py
 
-**step3.** How to train/test the code.
 
-* A training example：
+**Step2.** How to train?
 
-	`run_pansharpening.py`
-	
+> Open `01-DL-toolbox(Pytorch)/UDL/pansharpening`,  run the following code for training:
+
+> `python run_pansharpening.py`
+
+> If you want to change the network, you could: 
+
+1) revise arch='BDPN' in the following codes to your network name, e.g., arch='**'; 
+
 	```python
 	   import sys
            sys.path.append('../..')
@@ -68,14 +70,18 @@ Then,
            print(TaskDispatcher._task.keys())
            main(cfg)
 	 ````
+2) revise the corresponding setting in `configs/option_bdpn.py`, e.g., change 'valid_wv3.h5' to your validation data
+
+	```
+	   __cfg.eval__ = False, 
   
-	where arch='BDPN', and configs/option_bdpn.py has: 
-  
-	__cfg.eval__ = False, 
-  
-	__cfg.workflow__ = [('train', 50), ('val', 1)], 
+       __cfg.workflow__ = [('train', 50), ('val', 1)], 
 	
-	__cfg.dataset__ = {'train': 'wv3', 'val': 'valid_wv3.h5'}
+	   __cfg.dataset__ = {'train': 'wv3', 'val': 'valid_wv3.h5'}
+	```
+	
+
+**Step3.** How to test/infer?
 	
 * A test example:
 
