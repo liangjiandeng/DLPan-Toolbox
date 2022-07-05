@@ -40,8 +40,8 @@ Then,
 │   │   │   ├── ...
 │   ├── test_data
 │   │   ├── WV3
-│   │   │   ├── test_wv3_multiExm.h5
-│   │   │   ├── test_wv3_multiExm.h5
+│   │   │   ├── NY1_WV3_RR.mat
+│   │   │   ├── ...
 │   │   │   ├── ...
 ```
 
@@ -104,50 +104,49 @@ Then,
 	main(cfg)
 ```
 
+> How to get test outcome using the pretrained models?
+
+1) find two text examples (i.e., `NY1_WV3_RR.mat`) in the path `UDL/Data/pansharpening/test_data`; 
+
+2) load pretrained model by setting __model_path__ = "your_model_path" located in the folder of `UDL/pansharpening/models/`, or __cfg.resume_from__ = "your_model_path".
+
+3) run `run_test_pansharpening.py`, then you may find the test results in the folder of `UDL/results`
 
 
-**Step4**. How to customize the code.
 
-One model is divided into three parts:
+## FAQ
+**Q1.** How to customize your new network/model in this framework?
 
-1. Record hyperparameter configurations in folder of `01-DL-toolbox(Pytorch)/UDL/pansharpening/configs/Option_modelName.py`. For example, you can load pretrained model by setting __model_path__ = "your_model_path" or __cfg.resume_from__ = "your_model_path".
+> 1) Construct your model, loss, optimizer, scheduler in `UDL/pansharpening/models/modelName_main.py` (you decide your modelName in `modelName_main.py`).
 
-2. Set model, loss, optimizer, scheduler in folder of `01-DL-toolbox(Pytorch)/UDL/pansharpening/models/modelName_main.py`.
+> 2) Update `UDL/pansharpening/models/__init__.py` and add `option_modelName.py`.
 
-3. Write a new model in folder of `01-DL-toolbox(Pytorch)/UDL/pansharpening/models/*modelName*/model_modelName.py`.
+> 3) Config your hyperparameter in `UDL/pansharpening/configs/Option_modelName.py` (see other methods' configuration in the folder of `UDL/pansharpening/configs` for easy usage).
 
-Note that when you add a new model into `01-DL-toolbox(Pytorch)`, you need to update `01-DL-toolbox(Pytorch)/UDL/pansharpening/models/__init__.py` and add option_modelName.py.
+> 4) train your model and infer your results, see __step2__ and __step3__ for details.
 
-**Others**
-* if you want to add customized datasets, you need to update:
+
+
+**Q2.** How to customized your datasets?
+
+You need to update:
 
 ```
 01-DL-toolbox(Pytorch)/UDL/AutoDL/__init__.py.
 01-DL-toolbox(Pytorch)/UDL/pansharpening/common/psdata.py.
 ```
 
-* if you want to add customized tasks, you need to update:
+**Q3.**  How to customized training settings, such as saving model, recording logs, etc.?
 
-```
-1.Put model_newModelName and newModelName_main in 01-DL-toolbox(Pytorch)/UDL/taskName/models.
-2.Create a new folder of 01-DL-toolbox(Pytorch)/UDL/taskName/configs to put option_newModelName.
-3.Update 01-DL-toolbox(Pytorch)/UDL/AutoDL/__init__.p.
-4.Add a class in 01-DL-toolbox(Pytorch)/UDL/Basis/python_sub_class.py, like this:
-class PanSharpeningModel(ModelDispatcher, name='pansharpening'):
-```
-
-* if you want to add customized training settings, such as saving model, recording logs, and so on. you need to update:
+You need to update:
 
 ```
 01-DL-toolbox(Pytorch)/UDL/mmcv/mmcv/runner/hooks
 ```
 
-Note that: Don't put model/dataset/task-related files into the folder of AutoDL.
+**Note:** Don't put model/dataset/task-related files into the folder of AutoDL.
 
 * if you want to know more details of runner about how to train/test in `01-DL-toolbox(Pytorch)/UDL/AutoDL/trainer.py`, please see `01-DL-toolbox(Pytorch)/UDL/mmcv/mmcv/runner/epoch_based_runner.py`
-
-## Contribution
-We appreciate all contributions to improving '01-DL-toolbox(Pytorch)'. Looking forward to your contribution to DLPan-Toolbox.
 
 
 ## Citation
@@ -182,6 +181,9 @@ pages={},
 ## Acknowledgement
 - [MMCV](https://github.com/open-mmlab/mmcv): OpenMMLab foundational library for computer vision.
 - We appreciate the great contribution of [Xiao Wu](https://xiaoxiao-woo.github.io/) who is a graduate student in [UESTC](https://www.uestc.edu.cn/) to this toolbox.
+
+## Contribution
+We appreciate all contributions to improving '01-DL-toolbox(Pytorch)'. Looking forward to your contribution to DLPan-Toolbox.
 
 
 ## License & Copyright
