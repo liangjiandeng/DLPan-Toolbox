@@ -69,10 +69,10 @@ Then,
            cfg = TaskDispatcher.new(task='pansharpening', mode='entrypoint', arch='BDPN')
            print(TaskDispatcher._task.keys())
            main(cfg)
-	 ````
+	 ```
 2) revise the corresponding setting in `configs/option_bdpn.py`, e.g., change 'valid_wv3.h5' to your validation data
 
-	```
+	```python
 	   cfg.eval = False, 
   
        cfg.workflow = [('train', 50), ('val', 1)], 
@@ -87,21 +87,22 @@ Then,
 
 > `run_test_pansharpening.py`
 
-> Note you need to ensure `cfg.eval = True` or `cfg.workflow = [('val', 1)]` in `run_test_pansharpening.py` to run
+> Note you need to ensure `cfg.eval = True` or `cfg.workflow = [('val', 1)]` in the following `run_test_pansharpening.py` to run
 	  
-	  ```python
-		   import sys
-		   sys.path.append('../..')
-		   from UDL.AutoDL import TaskDispatcher
-		   from UDL.AutoDL.trainer import main
-		   
-		   if __name__ == '__main__':
-		   cfg = TaskDispatcher.new(task='pansharpening', mode='entrypoint', arch='MSDCNN')
-		   cfg.eval = True
-		   cfg.workflow = [('val', 1)]
-		   print(TaskDispatcher._task.keys())
-		   main(cfg)
-	    ```
+
+```python
+	import sys
+	sys.path.append('../..')
+	from UDL.AutoDL import TaskDispatcher
+	from UDL.AutoDL.trainer import main
+
+	if __name__ == '__main__':
+	cfg = TaskDispatcher.new(task='pansharpening', mode='entrypoint', arch='MSDCNN')
+	cfg.eval = True
+	cfg.workflow = [('val', 1)]
+	print(TaskDispatcher._task.keys())
+	main(cfg)
+```
 
 
 
