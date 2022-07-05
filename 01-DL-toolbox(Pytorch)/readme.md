@@ -40,8 +40,8 @@ Then,
 │   │   │   ├── ...
 │   ├── test_data
 │   │   ├── WV3
-│   │   │   ├── test_wv3_multiExm.h5
-│   │   │   ├── test_wv3_multiExm.h5
+│   │   │   ├── NY1_WV3_RR.mat
+│   │   │   ├── ...
 │   │   │   ├── ...
 ```
 
@@ -104,9 +104,25 @@ Then,
 	main(cfg)
 ```
 
+> How to get test outcome using the pretrained models?
+
+1) find two text examples (i.e., `NY1_WV3_RR.mat`) in the path `UDL/Data/pansharpening/test_data`; 
+
+2) load pretrained model by setting __model_path__ = "your_model_path" located in the folder of `UDL/pansharpening/models/`, or __cfg.resume_from__ = "your_model_path".
+
+3) run `run_test_pansharpening.py`, then you may find the test results in the folder of `UDL/results`
 
 
-**Step4**. How to customize the code.
+
+## FAQ
+**Q1.** How to customize your new network/model in this framework?
+
+> 1) Construct your model, loss, optimizer, scheduler in `UDL/pansharpening/models/modelName_main.py` (you decide your modelName in `modelName_main.py`).
+
+> 2) Update `UDL/pansharpening/models/__init__.py` and add `option_modelName.py`.
+
+> 3) Config your hyperparameter in `UDL/pansharpening/configs/Option_modelName.py` (see other methods' configuration in the folder of `UDL/pansharpening/configs`).
+
 
 One model is divided into three parts:
 
