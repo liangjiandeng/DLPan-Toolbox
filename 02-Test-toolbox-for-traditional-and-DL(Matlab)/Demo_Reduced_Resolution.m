@@ -35,9 +35,8 @@ clear; close all;
 addpath([pwd,'/Tools']);
 
 % Select algorithms to run
-% algorithms = {'GT','EXP','BT-H','BDSD-PC','C-GSA','SR-D',...
-%     'MTF-GLP-HPM-R','MTF-GLP-FS','TV','PanNet','DRPNN','MSDCNN','BDPN','DiCNN1','PNN','APNN','FusionNet'};
-algorithms = {'PanNet','DRPNN','MSDCNN','BDPN','DiCNN1','PNN','FusionNet'};
+algorithms = {'GT','EXP','BT-H','BDSD-PC','C-GSA','SR-D',...
+    'MTF-GLP-HPM-R','MTF-GLP-FS','TV','PanNet','DRPNN','MSDCNN','BDPN','DiCNN1','PNN','APNN','FusionNet'};
 % director to save EPS figures for latex editing; if other dataset, please
 % change the director correspondingly
 satellite = 'WV3';
