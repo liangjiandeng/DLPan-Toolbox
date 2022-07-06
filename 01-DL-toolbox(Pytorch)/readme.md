@@ -45,7 +45,7 @@ Then,
 │   │   │   ├── ...
 ```
 
-* Check and revise your dataset path in `01-DL-toolbox(Pytorch)/UDL/Basis/option.py` (line 100 or line 102, may not need to revise), or you can print the output of `run_pansharpening.py`, then set __cfg.data_dir__ to your dataset path.
+* Check and revise your dataset path in `01-DL-toolbox(Pytorch)/UDL/Basis/option.py` (line 100 or line 102, may not need to revise); Or, you can print the output of `run_pansharpening.py`, then set __cfg.data_dir__ (also line 100 or line 102) to your dataset path.
 
 
 
@@ -57,7 +57,7 @@ Then,
 
 > if you want to change the network, you could: 
 
-1) revise arch='BDPN' in the following codes to your network name, e.g., arch='**'; 
+1) revise arch='BDPN' in the following codes to other network's name, e.g., arch='xxx'; 
 
 	```python
 	   import sys
@@ -70,7 +70,7 @@ Then,
            print(TaskDispatcher._task.keys())
            main(cfg)
 	 ```
-2) revise the corresponding setting in `configs/option_bdpn.py`, e.g., change 'valid_wv3.h5' to your validation data
+2) revise the corresponding setting in `pansharpening/configs/option_bdpn.py`, e.g., hyperparameters, validation data
 
 	```python
 	   cfg.eval = False, 
@@ -106,9 +106,9 @@ Then,
 
 > How to get test outcome using the pretrained models?
 
-1) find two text examples (i.e., `NY1_WV3_RR.mat`) in the path `UDL/Data/pansharpening/test_data`; 
+1) find the given one example (i.e., `NY1_WV3_RR.mat`) in the path `UDL/Data/pansharpening/test_data`; 
 
-2) load pretrained model by setting __model_path__ = "your_model_path" located in the folder of `UDL/pansharpening/models/`, or __cfg.resume_from__ = "your_model_path".
+2) load pretrained model by setting __model_path__ = "your_model_path" located in the folder of `pansharpening/configs/option_bdpn.py` (line 15)； Or __cfg.resume_from__ = "your_model_path" (line 31).
 
 3) run `run_test_pansharpening.py`, then you may find the test results in the folder of `UDL/results`
 
@@ -117,36 +117,35 @@ Then,
 ## FAQ
 **Q1.** How to customize your new network/model in this framework?
 
-> 1) Construct your model, loss, optimizer, scheduler in `UDL/pansharpening/models/modelName_main.py` (you decide your modelName in `modelName_main.py`).
+> 1) Construct your model, loss, optimizer, scheduler in `UDL/pansharpening/models/modelName/modelName_main.py` (you need to create your modelName in `modelName_main.py`, i.e., the similar operation as other methods in the path).
 
-> 2) Update `UDL/pansharpening/models/__init__.py` and add `option_modelName.py`.
+> 2) Update `UDL/pansharpening/models/__init__.py` 
 
-> 3) Config your hyperparameter in `UDL/pansharpening/configs/Option_modelName.py` (see other methods' configuration in the folder of `UDL/pansharpening/configs` for easy usage).
+> 3) Add `option_modelName.py` in `UDL/pansharpening/configs/Option_modelName.py`, and configure your hyperparameters in this file (see other methods' configuration in `UDL/pansharpening/configs` for easy usage).
 
 > 4) train your model and infer your results, see __step2__ and __step3__ for details.
 
 
 
-**Q2.** How to customized your datasets?
+**Q2.** How to customize your datasets?
 
-You need to update:
+You need to update: `UDL/pansharpening/common/psdata.py` (revise/add lines 24-29 to customize your datasets).
 
-```
-01-DL-toolbox(Pytorch)/UDL/AutoDL/__init__.py.
-01-DL-toolbox(Pytorch)/UDL/pansharpening/common/psdata.py.
-```
+
 
 **Q3.**  How to customized training settings, such as saving model, recording logs, etc.?
 
-You need to update:
+You need to update: `UDL/mmcv/mmcv/runner/hooks` (generally, it does not need to revise if you do not require more complicated training settings).
 
-```
-01-DL-toolbox(Pytorch)/UDL/mmcv/mmcv/runner/hooks
-```
 
-**Note:** Don't put model/dataset/task-related files into the folder of AutoDL.
+**Q4.**  How to know more details of runner about how to train/test in `UDL/AutoDL/trainer.py`?
 
-* if you want to know more details of runner about how to train/test in `01-DL-toolbox(Pytorch)/UDL/AutoDL/trainer.py`, please see `01-DL-toolbox(Pytorch)/UDL/mmcv/mmcv/runner/epoch_based_runner.py`
+Please see `UDL/mmcv/mmcv/runner/epoch_based_runner.py`.
+
+
+**Note:** Don't put any files into the folder of AutoDL. 
+
+
 
 
 ## Citation
