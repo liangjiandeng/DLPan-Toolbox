@@ -3,9 +3,8 @@
 
 [English](https://github.com/.md) | [简体中文](https://github.com.md)
 
-This repository is the official Matlab implementation of our IEEE GRSM paper “Machine Learning in Pansharpening: A Benchmark, from Shallow to Deep Networks”, 2022 ([paper](https://liangjiandeng.github.io), [homepage](https://liangjiandeng.github.io)).
 
-
+This repository is the official Matlab implementation of our IEEE GRSM paper “Machine Learning in Pansharpening: A Benchmark, from Shallow to Deep Networks”, 2022 ([paper](https://github.com/liangjiandeng/liangjiandeng.github.io/tree/master/papers/2022/review-grsm2022.pdf) | [homepage](https://github.com/liangjiandeng/DLPan-Toolbox)).
 
 ## Features
 

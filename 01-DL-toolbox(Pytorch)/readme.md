@@ -18,7 +18,7 @@ This repository is the official PyTorch implementation of our IEEE GRSM paper â€
 Note: Our project is based on MMCV, but you needn't to install it currently.
 
 ## Quick Start
-**Step0.** Set your Python environment.
+**Step0. Set your Python environment.**
 
 >git clone https://github.com/liangjiandeng/DLPan-Toolbox/tree/main/01-DL-toolbox(Pytorch)
 
@@ -26,7 +26,7 @@ Then,
 
 > python setup.py develop
 
-**Step1.** Put datasets and set path
+**Step1. Put datasets and set path**
 * Put datasets (WorldView-3, QuickBird, GaoFen2, WorldView2) into the `UDL/Data/pansharpening`, see following path structure. 
 
 ```
@@ -49,13 +49,13 @@ Then,
 
 
 
-**Step2.** How to train?
+**Step2. How to train?**
 
-> Open `01-DL-toolbox(Pytorch)/UDL/pansharpening`,  run the following code for training:
+> open `01-DL-toolbox(Pytorch)/UDL/pansharpening`
 
-> `python run_pansharpening.py`
+> run `python run_pansharpening.py` for training
 
-> If you want to change the network, you could: 
+> if you want to change the network, you could: 
 
 1) revise arch='BDPN' in the following codes to your network name, e.g., arch='**'; 
 
@@ -81,11 +81,11 @@ Then,
 	```
 	
 
-**Step3.** How to test?
+**Step3. How to test?**
 
-> Open `01-DL-toolbox(Pytorch)/UDL/pansharpening`,  run the following code for testing:
+> open `01-DL-toolbox(Pytorch)/UDL/pansharpening`
 
-> `run_test_pansharpening.py`
+> run `run_test_pansharpening.py` for testing
 
 > Note you need to ensure `cfg.eval = True` or `cfg.workflow = [('val', 1)]` in the following `run_test_pansharpening.py` to run
 	  
