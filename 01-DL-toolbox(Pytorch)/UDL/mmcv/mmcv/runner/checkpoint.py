@@ -693,9 +693,9 @@ def load_checkpoint(resume_mode,
 
         # load state_dict
 
-        checkpoint['meta'].setdefault('epoch', 0) + 1
-        checkpoint['meta'].setdefault('iter', 0) + 1
-        checkpoint['meta'].setdefault('best_epoch', 0)
+        checkpoint['meta'].setdefault('epoch', 1)
+        checkpoint['meta'].setdefault('iter', 1)
+        checkpoint['meta'].setdefault('best_epoch', 1)
         checkpoint['meta'].setdefault('best_metric', None)
 
     return checkpoint
