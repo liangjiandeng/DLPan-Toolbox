@@ -378,7 +378,7 @@ end
 
 if ismember('DiCNN1',algorithms)
 %     file_dicnn = 'dicnn_wv3_rs_ny';
-    load(strcat('2_DL_Result/', satellite, '/DiCNN/', 'output_', mat_name, '.mat')) 
+    load(strcat('2_DL_Result/', satellite, '/DiCNN1/', 'output_', mat_name, '.mat')) 
     I_dicnn = double(sr);
     alg = alg + 1;
     [Q_avg_dicnn, SAM_dicnn, ERGAS_dicnn, SCC_dicnn, Q_dicnn] = indexes_evaluation(I_dicnn,I_GT,ratio,L,Qblocks_size,flag_cut_bounds,dim_cut,thvalues);
