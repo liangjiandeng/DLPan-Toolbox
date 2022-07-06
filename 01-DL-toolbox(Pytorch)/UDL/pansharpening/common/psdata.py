@@ -20,16 +20,16 @@ class PansharpeningSession():
 
     def get_dataloader(self, dataset_name, distributed):
 
-        if any(list(map(lambda x: x in dataset_name, ['wv2', 'wv3', 'wv4', 'qb', 'gf']))):
+        if any(list(map(lambda x: x in dataset_name, ['wv2', 'wv3', 'wv4', 'qb']))):
             if "hp" in dataset_name:
                 # high-pass filter
                 from UDL.pansharpening.common.dataset_hp import Dataset_Pro
                 dataset_name = dataset_name.split('_')[0] #'wv2_hp'
-                dataset = Dataset_Pro('/'.join([self.args.data_dir, 'training_data', f'train_{dataset_name}.h5']), img_scale=self.args.img_range)
+                dataset = Dataset_Pro('/'.join([self.args.data_dir, 'training_data', f'train_{dataset_name}_10000.h5']), img_scale=self.args.img_range)
             else:
 
                 from UDL.pansharpening.common.dataset import Dataset_Pro
-                dataset = Dataset_Pro('/'.join([self.args.data_dir, 'training_data', f'train_{dataset_name}.h5']), img_scale=self.args.img_range)
+                dataset = Dataset_Pro('/'.join([self.args.data_dir, 'training_data', f'train_{dataset_name}_10000.h5']), img_scale=self.args.img_range)
 
         else:
             print(f"train_{dataset_name} is not supported.")
@@ -70,47 +70,28 @@ class PansharpeningSession():
         return self.dataloaders, sampler
 
     def get_eval_dataloader(self, dataset_name, distributed):
-        if 'new_data' in dataset_name:
-            from UDL.pansharpening.evaluation.ps_evaluate import SingleDataset
-            dataset = SingleDataset(['/'.join([self.args.data_dir, "test_data", f"{dataset_name}.mat"])], dataset_name, img_scale=self.args.img_range)
 
-        elif 'multi_exm1258' in dataset_name:
+        if 'TestData' in dataset_name:
+            if 'hp' in dataset_name:
+                satellite = dataset_name.split('_')[-2]
+            else:
+                satellite = dataset_name.split('_')[-1]
+
             from UDL.pansharpening.evaluation.ps_evaluate import MultiExmTest_h5
-            dataset = MultiExmTest_h5('/'.join([self.args.data_dir, "test_data/WV3_Simu_mulExm/test1_mulExm1258.mat"]), dataset_name, suffix='.mat', img_scale=self.args.img_range)
+            dataset = MultiExmTest_h5('/'.join([self.args.data_dir, f"test_data/{satellite.upper()}/TestData_{dataset_name.replace('_hp', '')}"]),
+                                      dataset_name, img_scale=self.args.img_range)
 
-        elif 'singleMat' in dataset_name:
+        elif 'RR' in dataset_name or 'FR' in dataset_name:
+            splits = dataset_name.split('_')
+            if 'hp' in dataset_name:
+                satellite = splits[-3]
+            else:
+                satellite = splits[-2]
+
             from UDL.pansharpening.evaluation.ps_evaluate import SingleDataset
-            dataset = SingleDataset(glob.glob('/'.join([self.args.data_dir, "test_data", "*.mat"])), dataset_name)
 
-        elif 'Test(HxWxC)' in dataset_name:
-            # Test(HxWxC)_gf2_data_fr/rr...
-            from UDL.pansharpening.evaluation.ps_evaluate import SingleDatasetV2
-            satellite = dataset_name.split('_')[1]
-            type = 'FR-Data' if 'fr' in dataset_name else 'RR-Data'
-            dataset = SingleDatasetV2(glob.glob('/'.join([self.args.data_dir, f"/test_data/{satellite.upper()}/{type}/*.mat"])), dataset_name, img_scale=self.args.img_range)
-
-        elif 'multiExm' in dataset_name:
-            satellite = dataset_name.split('_')[0]
-            suffix = dataset_name.split('.')[-1]
-            from UDL.pansharpening.evaluation.ps_evaluate import MultiExmTest_h5
-            dataset = MultiExmTest_h5('/'.join([self.args.data_dir, f"test_data/{satellite.upper()}/test_{dataset_name}"]),
-                                      dataset_name, suffix=f'.{suffix}', img_scale=self.args.img_range)
-        # elif 'multiExm' in dataset_name or mode == 'val':
-        #
-        #     if mode == "val" and dataset_name in self.mapping:
-        #         dataset_name = self.mapping[dataset_name]
-
-            # satellite = dataset_name.split('_')[0]
-            # suffix = dataset_name.split('.')[-1]
-            # from UDL.pansharpening.evaluation.ps_evaluate import MultiExmTest_h5
-            # dataset = MultiExmTest_h5('/'.join([self.args.data_dir, f"test_data/{satellite.upper()}/test_{dataset_name}"]),
-            #                           dataset_name, suffix=f'.{suffix}', img_scale=self.args.img_range)
-        elif 'Test' in dataset_name:
-            from UDL.pansharpening.evaluation.ps_evaluate import SingleDataset
-            satellite = dataset_name.split('_')[0]
-            dataset = SingleDataset(glob.glob('/'.join([self.args.data_dir, "test_data", satellite, "01-Test_Single", "RR-Data", "/*.mat"])), dataset_name, img_scale=self.args.img_range)
-
-
+            # mode, satellite = splits[-1], splits[2]
+            dataset = SingleDataset(['/'.join([self.args.data_dir, satellite, "test_data", dataset_name.replace('_hp', '')+".mat"])], dataset_name, img_scale=self.args.img_range)
 
 
         else:

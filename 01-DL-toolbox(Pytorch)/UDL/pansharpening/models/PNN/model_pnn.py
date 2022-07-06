@@ -1,8 +1,9 @@
 import torch
 import torch.nn as nn
+from torch.nn import functional as F
 import math
-from UDL.Basis.variance_sacling_initializer import variance_scaling_initializer
-from UDL.pansharpening.models import PanSharpeningModel
+# from UDL.Basis.variance_sacling_initializer import variance_scaling_initializer
+
 class PNN(nn.Module):
     def __init__(self, spectral_num, criterion, channel=64):
         super(PNN, self).__init__()
@@ -47,14 +48,15 @@ class PNN(nn.Module):
         log_vars.update(loss=loss['loss'])
         return {'loss': loss['loss'], 'log_vars': log_vars}
 
-    def eval_step(self, data, *args, **kwargs):
+    def val_step(self, data, *args, **kwargs):
         blk = self.blk
         gt, lms, ms, pan = data['gt'].cuda(), data['lms'].cuda(), \
                            data['ms'].cuda(), data['pan'].cuda()
-        lms = torch.cat([lms, pan], dim=1)
-        sr = self(lms)
+        test_I_in1 = torch.cat([lms, pan], dim=1)
+        test_I_in1 = F.pad(test_I_in1, (blk, blk, blk, blk), mode='replicate')
+        sr = self(test_I_in1)
 
-        return sr, gt[:, blk:-blk, blk:-blk, :]
+        return sr, gt
 
     @classmethod
     def set_blk(cls, blk):
