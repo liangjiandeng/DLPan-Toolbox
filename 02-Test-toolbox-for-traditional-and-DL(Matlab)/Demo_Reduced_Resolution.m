@@ -376,7 +376,7 @@ end
 %% ====== 5) DiCNN Method ======
 
 
-if ismember('DiCNN',algorithms)
+if ismember('DiCNN1',algorithms)
 %     file_dicnn = 'dicnn_wv3_rs_ny';
     load(strcat('2_DL_Result/', satellite, '/DiCNN/', 'output_', mat_name, '.mat')) 
     I_dicnn = double(sr);
