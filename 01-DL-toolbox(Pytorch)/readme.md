@@ -45,7 +45,7 @@ Then,
 │   │   │   ├── ...
 ```
 
-* Check and revise your dataset path in `01-DL-toolbox(Pytorch)/UDL/Basis/option.py` (may not need to revise), or you can print the output of `run_pansharpening.py`, then set __cfg.data_dir__ to your dataset path.
+* Check and revise your dataset path in `01-DL-toolbox(Pytorch)/UDL/Basis/option.py` (line 100 or line 102, may not need to revise), or you can print the output of `run_pansharpening.py`, then set __cfg.data_dir__ to your dataset path.
 
 
 
