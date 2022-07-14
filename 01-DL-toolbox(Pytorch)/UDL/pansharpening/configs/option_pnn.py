@@ -12,9 +12,7 @@ class parser_args(TaskDispatcher, name='PNN'):
         script_path = os.path.dirname(os.path.dirname(__file__))
         root_dir = script_path.split(cfg.task)[0].replace('\\', '/')
 
-        model_path = f'/home/woo/文档/GitHub/UDL_bak/UDL/results/pansharpening/wv3/PNN/Test/model_2022-04-26-16-16-20/11990.pth.tar'
-        # model_path = f'/home/woo/文档/GitHub/UDL_bak/UDL/results/pansharpening/qb/PNN/Test/model_2022-04-27-01-23-00/11990.pth.tar'
-        # model_path = f'/home/woo/文档/GitHub/UDL_bak/UDL/results/pansharpening/gf2/PNN/Test/11998.pth.tar'
+        model_path = f'.pth.tar'
 
         parser = argparse.ArgumentParser(description='PyTorch Pansharpening Training')
         # * Logger
@@ -38,10 +36,11 @@ class parser_args(TaskDispatcher, name='PNN'):
         # * Model and Dataset
         parser.add_argument('--arch', '-a', metavar='ARCH', default='PNN', type=str,
                             choices=['PanNet', 'DiCNN', 'PNN', 'FusionNet'])
-        parser.add_argument('--dataset', default={'train': 'wv3', 'val': 'wv3_multiExm.h5'}, type=str,
-                            choices=[None, 'wv2', 'wv3', 'wv4', 'qb', 'gf',
-                                     'wv2_hp', ...,
-                                     'fr', 'wv3_singleMat', 'wv3_multi_exm1258', 'wv3_OrigScale_multiExm1.h5'],
+        parser.add_argument('--dataset', default={'train': 'wv3', 'val': 'NY1_WV3_RR'}, type=str,
+                            choices=[None, 'wv2', 'wv3', 'wv4', 'qb',
+                                     'TestData_qb', 'TestData_wv2', 'TestData_wv3', 'TestData_wv4',
+                                     'San_Francisco_QB_RR', 'San_Francisco_QB_FR', 'NY1_WV3_FR',
+                                     'NY1_WV3_RR', 'Alice_WV4_FR', 'Alice_WV4_RR', 'Rio_WV2_FR', 'Rio_WV2_RR'],
                             help="performing evalution for patch2entire")
         parser.add_argument('--eval', default=False, type=bool,
                             help="performing evalution for patch2entire")

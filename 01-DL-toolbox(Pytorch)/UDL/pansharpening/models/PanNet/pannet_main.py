@@ -66,7 +66,7 @@ from UDL.pansharpening.models import PanSharpeningModel
 class build_pannet(PanSharpeningModel, name='PanNet'):
     def __call__(self, cfg):
 
-        if 'hp' not in cfg.dataset:
+        if not all(['hp' in name for name in list(cfg.dataset.values())]):
             raise ValueError(f"{cfg.dataset} is wrong for PanNet, you need high-pass filter dataset.")
 
         # important for Pansharpening models, which are from tensorflow code

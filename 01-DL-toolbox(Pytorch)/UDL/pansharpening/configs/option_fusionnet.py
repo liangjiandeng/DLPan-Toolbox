@@ -39,10 +39,11 @@ class parser_args(TaskDispatcher, name='FusionNet'):
         ##
         parser.add_argument('--arch', '-a', metavar='ARCH', default='FusionNet', type=str,
                             choices=['PanNet', 'DiCNN', 'PNN', 'FusionNet'])
-        parser.add_argument('--dataset', default={'train': 'wv3', 'val': 'wv3_multiExm.h5'}, type=str,
-                            choices=[None, 'wv2', 'wv3', 'wv4', 'qb', 'gf',
-                                     'wv2_hp', ...,
-                                     'fr', 'wv3_singleMat', 'wv3_multi_exm1258'],
+        parser.add_argument('--dataset', default={'train': 'wv3', 'val': 'NY1_WV3_RR'}, type=str,
+                            choices=[None, 'wv2', 'wv3', 'wv4', 'qb',
+                                     'TestData_qb', 'TestData_wv2', 'TestData_wv3', 'TestData_wv4',
+                                     'San_Francisco_QB_RR', 'San_Francisco_QB_FR', 'NY1_WV3_FR',
+                                     'NY1_WV3_RR', 'Alice_WV4_FR', 'Alice_WV4_RR', 'Rio_WV2_FR', 'Rio_WV2_RR'],
                             help="performing evalution for patch2entire")
         parser.add_argument('--eval', default=False, type=bool,
                             help="performing evalution for patch2entire")

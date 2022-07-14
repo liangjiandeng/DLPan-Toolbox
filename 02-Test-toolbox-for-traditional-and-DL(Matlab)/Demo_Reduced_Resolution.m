@@ -6,7 +6,7 @@
 %     thus please cite the paper:
 %     [1] G. Vivone, et al., A new benchmark based on recent advances in multispectral pansharpening: Revisiting
 %         pansharpening with classical and emerging pansharpening methods, IEEE Geosci. Remote Sens. Mag., 
-%         9(1): 53¨C81, 2021
+%         9(1): 53ï¿½C81, 2021
 %  3) Also, if you use this toolbox, please cite our paper:
 %     [2] L.-J. Deng, et al., Machine Learning in Pansharpening: A Benchmark, from Shallow to Deep Networks, 
 %         IEEE Geosci. Remote Sens. Mag., 2022
@@ -36,11 +36,12 @@ addpath([pwd,'/Tools']);
 
 % Select algorithms to run
 algorithms = {'GT','EXP','BT-H','BDSD-PC','C-GSA','SR-D',...
-    'MTF-GLP-HPM-R','MTF-GLP-FS','TV','PanNet','DRPNN','MSDCNN','BDPN','DiCNN','PNN','APNN','FusionNet'};
-
+    'MTF-GLP-HPM-R','MTF-GLP-FS','TV','PanNet','DRPNN','MSDCNN','BDPN','DiCNN1','PNN','APNN','FusionNet'};
 % director to save EPS figures for latex editing; if other dataset, please
 % change the director correspondingly
-data_name = '3_EPS/WV3/wv3_rs_ny';  
+satellite = 'WV3';
+mat_name = 'NY1_WV3_RR';
+data_name = strcat('3_EPS/', satellite, '/', mat_name);  
 
 %% ==========Read Data and sensors' info====================
 %% read the test dataset; if use your test dataset, please update in this folder
@@ -306,14 +307,16 @@ end
 % if you use other sensor's data, please update the following director and
 % DL result. Note that the DL results here are obtained from our "01-DL toolbox (Pytorch)" folder, please check it.
 % Similar operation for following other DL methods.
-file_pannet = 'pannet_wv3_rs_ny';
-load(strcat('2_DL_Result/WV3/PanNet/', file_pannet, '.mat')) 
+
 
 % (Note: val_bit = 2047 for 11-bit WV3, WV4 and QB data; val_bit = 1023 for 10-bit GF2 data)
 val_bit  = 2047;
-I_pannet = val_bit*double(pannet_wv3_rs_ny);
+
 
 if ismember('PanNet',algorithms)
+%     file_pannet = 'output';
+    load(strcat('2_DL_Result/', satellite, '/PanNet/', 'output_', mat_name, '.mat')) 
+    I_pannet = double(sr);
     alg = alg + 1;
     [Q_avg_pannet, SAM_pannet, ERGAS_pannet, SCC_pannet, Q_pannet] = indexes_evaluation(I_pannet,I_GT,ratio,L,Qblocks_size,flag_cut_bounds,dim_cut,thvalues);
     MatrixResults(alg,:) = [Q_pannet,Q_avg_pannet,SAM_pannet,ERGAS_pannet,SCC_pannet];
@@ -325,11 +328,10 @@ if ismember('PanNet',algorithms)
 end
 
 %% ====== 2) DRPNN Method ======
-file_drpnn = 'drpnn_wv3_rs_ny';
-load(strcat('2_DL_Result/WV3/DRPNN/', file_drpnn, '.mat')) % load i-th image for DiCNN
-I_drpnn = val_bit*double(drpnn_wv3_rs_ny);
-
 if ismember('DRPNN',algorithms)
+%     file_drpnn = 'drpnn_wv3_rs_ny';
+    load(strcat('2_DL_Result/', satellite, '/DRPNN/', 'output_', mat_name, '.mat')) 
+    I_drpnn = double(sr);
     alg = alg + 1;
     [Q_avg_drpnn, SAM_drpnn, ERGAS_drpnn, SCC_drpnn, Q_drpnn] = indexes_evaluation(I_drpnn,I_GT,ratio,L,Qblocks_size,flag_cut_bounds,dim_cut,thvalues);
     MatrixResults(alg,:) = [Q_drpnn,Q_avg_drpnn,SAM_drpnn,ERGAS_drpnn,SCC_drpnn];
@@ -341,11 +343,11 @@ if ismember('DRPNN',algorithms)
 end
 
 %% ====== 3) MSDCNN Method ======
-file_msdcnn = 'msdcnn_wv3_rs_ny';
-load(strcat('2_DL_Result/WV3/MSDCNN/', file_msdcnn, '.mat')) % load i-th image for DiCNN
-I_msdcnn = val_bit*double(msdcnn_wv3_rs_ny);
 
 if ismember('MSDCNN',algorithms)
+%     file_msdcnn = 'msdcnn_wv3_rs_ny';
+    load(strcat('2_DL_Result/', satellite, '/MSDCNN/', 'output_', mat_name, '.mat')) 
+    I_msdcnn = double(sr);
     alg = alg + 1;
     [Q_avg_msdcnn, SAM_msdcnn, ERGAS_msdcnn, SCC_msdcnn, Q_msdcnn] = indexes_evaluation(I_msdcnn,I_GT,ratio,L,Qblocks_size,flag_cut_bounds,dim_cut,thvalues);
     MatrixResults(alg,:) = [Q_msdcnn,Q_avg_msdcnn,SAM_msdcnn,ERGAS_msdcnn,SCC_msdcnn];
@@ -357,11 +359,10 @@ if ismember('MSDCNN',algorithms)
 end
 
 %% ====== 4) BDPN Method ======
-file_bdpn  = 'bdpn_wv3_rs_ny';
-load(strcat('2_DL_Result/WV3/BDPN/', file_bdpn , '.mat')) % load i-th image for DiCNN
-I_bdpn  = val_bit*double(bdpn_wv3_rs_ny);
-
 if ismember('BDPN',algorithms)
+%     file_bdpn  = 'bdpn_wv3_rs_ny';
+    load(strcat('2_DL_Result/', satellite, '/BDPN/', 'output_', mat_name, '.mat')) 
+    I_bdpn  = double(sr);
     alg = alg + 1;
     [Q_avg_bdpn, SAM_bdpn, ERGAS_bdpn, SCC_bdpn, Q_bdpn] = indexes_evaluation(I_bdpn,I_GT,ratio,L,Qblocks_size,flag_cut_bounds,dim_cut,thvalues);
     MatrixResults(alg,:) = [Q_bdpn,Q_avg_bdpn,SAM_bdpn,ERGAS_bdpn,SCC_bdpn];
@@ -373,11 +374,12 @@ if ismember('BDPN',algorithms)
 end
 
 %% ====== 5) DiCNN Method ======
-file_dicnn = 'dicnn_wv3_rs_ny';
-load(strcat('2_DL_Result/WV3/DiCNN/', file_dicnn, '.mat')) % load i-th image for DiCNN
-I_dicnn = val_bit*double(dicnn_wv3_rs_ny);
 
-if ismember('DiCNN',algorithms)
+
+if ismember('DiCNN1',algorithms)
+%     file_dicnn = 'dicnn_wv3_rs_ny';
+    load(strcat('2_DL_Result/', satellite, '/DiCNN1/', 'output_', mat_name, '.mat')) 
+    I_dicnn = double(sr);
     alg = alg + 1;
     [Q_avg_dicnn, SAM_dicnn, ERGAS_dicnn, SCC_dicnn, Q_dicnn] = indexes_evaluation(I_dicnn,I_GT,ratio,L,Qblocks_size,flag_cut_bounds,dim_cut,thvalues);
     MatrixResults(alg,:) = [Q_dicnn,Q_avg_dicnn,SAM_dicnn,ERGAS_dicnn,SCC_dicnn];
@@ -389,11 +391,10 @@ if ismember('DiCNN',algorithms)
 end
 
 %% ====== 6) PNN Method ======
-file_pnn = 'pnn_wv3_rs_ny';
-load(strcat('2_DL_Result/WV3/PNN/', file_pnn, '.mat')) % load i-th image for DiCNN
-I_pnn = val_bit*double(pnn_wv3_rs_ny);
-
 if ismember('PNN',algorithms)
+%     file_pnn = 'pnn_wv3_rs_ny';
+    load(strcat('2_DL_Result/', satellite ,'/PNN/', 'output_', mat_name, '.mat')) 
+    I_pnn = double(sr);
     alg = alg + 1;
     [Q_avg_pnn, SAM_pnn, ERGAS_pnn, SCC_pnn, Q_pnn] = indexes_evaluation(I_pnn,I_GT,ratio,L,Qblocks_size,flag_cut_bounds,dim_cut,thvalues);
     MatrixResults(alg,:) = [Q_pnn,Q_avg_pnn,SAM_pnn,ERGAS_pnn,SCC_pnn];
@@ -405,11 +406,10 @@ if ismember('PNN',algorithms)
 end
 
 %% ====== 7) APNN Method ======
-file_apnn = 'apnn_wv3_rs_ny';
-load(strcat('2_DL_Result/WV3/APNN/', file_apnn, '.mat')) % load i-th image for DiCNN
-I_apnn = val_bit*double(apnn_wv3_rs_ny);
-
 if ismember('APNN',algorithms)
+%     file_apnn = 'apnn_wv3_rs_ny';
+    load(strcat('2_DL_Result/', satellite, '/APNN/', 'output_', mat_name, '.mat')) 
+    I_apnn = double(sr);
     alg = alg + 1;
     [Q_avg_apnn, SAM_apnn, ERGAS_apnn, SCC_apnn, Q_apnn] = indexes_evaluation(I_apnn,I_GT,ratio,L,Qblocks_size,flag_cut_bounds,dim_cut,thvalues);
     MatrixResults(alg,:) = [Q_apnn,Q_avg_apnn,SAM_apnn,ERGAS_apnn,SCC_apnn];
@@ -421,11 +421,12 @@ if ismember('APNN',algorithms)
 end
 
 %% ====== 8) FusionNet Method ======
-file_fusionnet = 'fusionnet_wv3_rs_ny';
-load(strcat('2_DL_Result/WV3/FusionNet/', file_fusionnet, '.mat')) % load i-th image for DiCNN
-I_fusionnet = val_bit*double(fusionnet_wv3_rs_ny);
 
 if ismember('FusionNet',algorithms)
+%     file_fusionnet = 'fusionnet_wv3_rs_ny';
+%     load(strcat('2_DL_Result/', satellite ,'/FusionNet/', 'output_',mat_name, '.mat'));
+    load(strcat('2_DL_Result/', satellite ,'/FusionNet/', 'fusionnet_wv3_rs_ny', '.mat'));
+    I_fusionnet = val_bit * double(sr);
     alg = alg + 1;
     [Q_avg_fusionnet, SAM_fusionnet, ERGAS_fusionnet, SCC_fusionnet, Q_fusionnet] = indexes_evaluation(I_fusionnet,I_GT,ratio,L,Qblocks_size,flag_cut_bounds,dim_cut,thvalues);
     MatrixResults(alg,:) = [Q_fusionnet,Q_avg_fusionnet,SAM_fusionnet,ERGAS_fusionnet,SCC_fusionnet];
