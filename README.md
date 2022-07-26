@@ -11,7 +11,7 @@ This toolbox mainly contains two parts: one is the pytorch source codes for the 
 
 - 01-DL-toolbox(Pytorch) contains source codes of DL methods, you may check the ``readme`` file for the usage.
 - 02-Test-toolbox-for-traditional-and-DL(Matlab) contains Matlab source codes (mainly from 'G. Vivone et al., A New Benchmark Based on Recent Advances in Multispectral Pansharpening: Revisiting pansharpening with classical and emerging pansharpening methods, IEEE GRSM, 2021', see the following reference [2]) for simultaneously evaluating traditional and DL approaches and outputing results, you may check the ``readme`` file for the usage. 
-- 03-Data-Simulation(Matlab) contains Matlab source codes that are patching images to patches for training and validation. Also, it can be used to simulate test examples by this toolbox.
+- 03-Data-Simulation(Matlab) contains Matlab source codes that are patching images to patches for training and validation. Also, you can simulate test examples by this toolbox.
 
 Note that, readers also could check the structure and relationship of these two folders in the following ``overview figure`` (also find it in the respository).
 
