@@ -31,7 +31,8 @@ author={L.-J. Deng, G. Vivone, M. E. Paoletti, G. Scarpa, J. He, Y. Zhang, J. Ch
 booktitle={IEEE Geoscience and Remote Sensing Magazine},
 title={Machine Learning in Pansharpening: A Benchmark, from Shallow to Deep Networks},
 year={2022},
-pages={},
+pages={2-38},
+doi={10.1109/MGRS.2020.3019315}
 }
 ```
 
