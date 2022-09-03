@@ -47,30 +47,28 @@ def load_dataset_singlemat_hp(file_path, scale):
     data = sio.loadmat(file_path)  # HxWxC
 
     # tensor type:
-    lms = torch.from_numpy(data['lms'] / scale).permute(2, 0, 1)  # CxHxW = 8x256x256
-    ms_hp = torch.from_numpy(get_edge(data['ms'] / scale)).permute(2, 0, 1).unsqueeze(dim=0)  # CxHxW= 8x64x64
-    mms_hp = F.interpolate(ms_hp, size=(ms_hp.size(2) * 2, ms_hp.size(3) * 2),
-                        mode="bilinear", align_corners=True)
-    pan_hp = torch.from_numpy(get_edge(data['pan'] / scale))   # HxW = 256x256
-    gt = torch.from_numpy(data['gt'] / scale)
+    lms = torch.from_numpy(data['I_MS'] / scale).permute(2, 0, 1)  # CxHxW = 8x256x256
+    ms_hp = torch.from_numpy(get_edge(data['I_MS_LR'] / scale)).permute(2, 0, 1).unsqueeze(dim=0)  # CxHxW= 8x64x64
+    pan_hp = torch.from_numpy(get_edge(data['I_PAN'] / scale))   # HxW = 256x256
+    gt = torch.from_numpy(data['I_GT'] / scale)
 
-    return lms.squeeze().float(), mms_hp.squeeze().float(), ms_hp.squeeze().float(), pan_hp.float(), gt.float()
+    return lms.squeeze().float(), ms_hp.squeeze().float(), pan_hp.float(), gt.float()
 
 
 def load_dataset_singlemat(file_path, scale):
     data = sio.loadmat(file_path)  # HxWxC
+    print("load_dataset_singlemat: ", data.keys())
     # tensor type:
-    lms = torch.from_numpy(data['lms'] / scale).permute(2, 0, 1)  # CxHxW = 8x256x256
-    ms = torch.from_numpy(data['ms'] / scale).permute(2, 0, 1).unsqueeze(dim=0)  # CxHxW= 8x64x64
-    mms = F.interpolate(ms, size=(ms.size(2) * 2, ms.size(3) * 2),
-                        mode="bilinear", align_corners=True)
-    pan = torch.from_numpy(data['pan'] / scale)  # HxW = 256x256
-    if data.get('gt', None) is None:
-        gt = torch.from_numpy(data['lms'] / scale)
-    else:
-        gt = torch.from_numpy(data['gt'] / scale)
+    lms = torch.from_numpy(data['I_MS'] / scale).permute(2, 0, 1)  # CxHxW = 8x256x256
+    ms = torch.from_numpy(data['I_MS_LR'] / scale).permute(2, 0, 1).unsqueeze(dim=0)  # CxHxW= 8x64x64
 
-    return lms.squeeze().float(), mms.squeeze().float(), ms.squeeze().float(), pan.float(), gt.float()
+    pan = torch.from_numpy(data['I_PAN'] / scale)  # HxW = 256x256
+    if data.get('I_GT', None) is None:
+        gt = torch.from_numpy(data['I_MS'] / scale)
+    else:
+        gt = torch.from_numpy(data['I_GT'] / scale)
+
+    return lms.squeeze().float(), ms.squeeze().float(), pan.float(), gt.float()
 
 
 def load_dataset_H5_hp(file_path, scale, use_cuda=True):
@@ -109,8 +107,6 @@ def load_dataset_H5(file_path, scale, use_cuda=True):
         lms = torch.from_numpy(data['lms'][...] / scale).cuda().float()  # CxHxW = 8x64x64
 
         ms = torch.from_numpy(data['ms'][...] / scale).cuda().float()  # CxHxW= 8x64x64
-        mms = torch.nn.functional.interpolate(ms, size=(ms.size(2) * 2, ms.size(3) * 2),
-                                              mode="bilinear", align_corners=True)
         pan = torch.from_numpy(data['pan'][...] / scale).cuda().float()  # HxW = 256x256
 
         gt = torch.from_numpy(data['gt'][...]).cuda().float()
@@ -119,8 +115,6 @@ def load_dataset_H5(file_path, scale, use_cuda=True):
         lms = torch.from_numpy(data['lms'][...] / scale).float()  # CxHxW = 8x64x64
 
         ms = torch.from_numpy(data['ms'][...] / scale).float()  # CxHxW= 8x64x64
-        mms = torch.nn.functional.interpolate(ms, size=(ms.size(2) * 2, ms.size(3) * 2),
-                                              mode="bilinear", align_corners=True)
         pan = torch.from_numpy(data['pan'][...] / scale).float()  # HxW = 256x256
         if data.get('gt', None) is None:
             gt = torch.from_numpy(data['lms'][...]).float()
@@ -128,7 +122,6 @@ def load_dataset_H5(file_path, scale, use_cuda=True):
             gt = torch.from_numpy(data['gt'][...]).float()
 
     return {'lms': lms,
-            'mms:': mms,
             'ms': ms,
             'pan': pan,
             'gt': gt.permute([0, 2, 3, 1])
@@ -159,15 +152,11 @@ class MultiExmTest_h5(Dataset):
         if suffix == '.mat':
             self.lms = data['lms'].permute(0, 3, 1, 2)  # CxHxW = 8x256x256
             self.ms = data['ms'].permute(0, 3, 1, 2)  # CxHxW= 8x64x64
-            self.mms = torch.nn.functional.interpolate(self.ms, size=(self.ms.size(2) * 2, self.ms.size(3) * 2),
-                                                       mode="bilinear", align_corners=True)
             self.pan = data['pan'].unsqueeze(1)
             self.gt = data['gt'].permute(0, 3, 1, 2)
         else:
             self.lms = data['lms']
             self.ms = data['ms']
-            self.mms = torch.nn.functional.interpolate(self.ms, size=(self.ms.size(2) * 2, self.ms.size(3) * 2),
-                                                       mode="bilinear", align_corners=True)
             self.pan = data['pan']
             self.gt = data['gt']
 
@@ -175,7 +164,6 @@ class MultiExmTest_h5(Dataset):
 
     def __getitem__(self, item):
         return {'lms': self.lms[item, ...],
-                'mms': self.mms[item, ...],
                 'ms': self.ms[item, ...],
                 'pan': self.pan[item, ...],
                 'gt': self.gt[item, ...]
@@ -190,12 +178,7 @@ class SingleDataset(Dataset):
 
 
     def __init__(self, file_lists, dataset_name, img_scale, dataset=None):
-        if dataset is None:
-            dataset = ["new_data10", "new_data11", "new_data12_512",
-                       "new_data3_wv2", "new_data4_wv2", "new_data5_wv2",
-                       "new_data6", "new_data7", "new_data8", "new_data9",
-                       "new_data_OrigScale3", "new_data_OrigScale4"
-                       ]
+
         self.img_scale = img_scale
         self.file_lists = file_lists
         print(f"loading SingleDataset: {file_lists} with {img_scale}")
@@ -213,77 +196,23 @@ class SingleDataset(Dataset):
 
     def __getitem__(self, idx):
         file_path = self.file_lists[idx % self.file_nums]
-        test_lms, test_mms, test_ms, test_pan, gt = self.dataset(file_path, self.img_scale)
+        test_lms, test_ms, test_pan, gt = self.dataset(file_path, self.img_scale)
 
         if 'hp' not in self.dataset_name:
             return {'gt': (gt * self.img_scale),
                     'lms': test_lms,
-                    'mms': test_mms,
                     'ms': test_ms,
                     'pan': test_pan.unsqueeze(dim=0),
                     'filename': file_path}
         else:
             return {'gt': (gt * self.img_scale),
                     'lms': test_lms,
-                    'mms_hp': test_mms,
-                    'ms_hp': test_ms,
-                    'pan_hp': test_pan.unsqueeze(dim=0),
-                    'filename': file_path}
-
-    def __len__(self):
-        return self.file_nums
-
-class SingleDatasetV2(Dataset):
-
-
-
-    def __init__(self, file_lists, dataset_name, img_scale, dataset=None):
-        if dataset is None:
-            dataset = ["new_data10", "new_data11", "new_data12_512",
-                       "new_data3_wv2", "new_data4_wv2", "new_data5_wv2",
-                       "new_data6", "new_data7", "new_data8", "new_data9",
-                       "new_data_OrigScale3", "new_data_OrigScale4"
-                       ]
-        self.file_lists = file_lists
-        self.img_scale = img_scale
-        print(f"loading SingleDataset: {file_lists} with {self.img_scale}")
-        self.file_nums = len(file_lists)
-        self.dataset = {}
-        self.dataset_name = dataset_name
-
-        if 'hp' not in dataset_name:
-            self.dataset = load_dataset_singlemat
-        elif 'hp' in dataset_name:
-            self.dataset = load_dataset_singlemat_hp
-        else:
-            print(f"{dataset_name} is not supported in evaluation")
-            raise NotImplementedError
-
-    def __getitem__(self, idx):
-        file_path = self.file_lists[idx % self.file_nums]
-        test_lms, test_mms, test_ms, test_pan, gt = self.dataset(file_path, self.img_scale)
-
-        if 'hp' not in self.dataset_name:
-            return {'gt': (gt * self.img_scale),
-                    'lms': test_lms,
-                    'mms': test_mms,
                     'ms': test_ms,
                     'pan': test_pan.unsqueeze(dim=0),
                     'filename': file_path}
-        else:
-            return {'gt': (gt * self.img_scale),
-                    'lms': test_lms,
-                    'mms_hp': test_mms,
-                    'ms_hp': test_ms,
-                    'pan_hp': test_pan.unsqueeze(dim=0),
-                    'filename': file_path}
 
     def __len__(self):
         return self.file_nums
-
-
-def mpl_save_fig(filename):
-    plt.savefig(f"{filename}", format='svg', dpi=300, pad_inches=0, bbox_inches='tight')
 
 
 def save_results(idx, save_model_output, filename, save_fmt, output):
@@ -297,12 +226,15 @@ def save_results(idx, save_model_output, filename, save_fmt, output):
             output = showimage8(output)
             filename = '/'.join([save_model_output, filename + ".png"])
             # plt.imsave(filename, output, dpi=300)
-            show_region_images(output, xywh=[50, 100, 50, 50], #sub_width="20%", sub_height="20%",
-                               sub_ax_anchor=(0, 0, 1, 1))
-            mpl_save_fig(filename)
+            # show_region_images(output, xywh=[50, 100, 50, 50], #sub_width="20%", sub_height="20%",
+            #                    sub_ax_anchor=(0, 0, 1, 1))
+            # mpl_save_fig(filename)
         else:
             filename = '/'.join([save_model_output, "output_" + filename + ".mat"])
             sio.savemat(filename, {'sr': output.cpu().detach().numpy()})
 
+
+def mpl_save_fig(filename):
+    plt.savefig(f"{filename}", format='svg', dpi=300, pad_inches=0, bbox_inches='tight')
 
 

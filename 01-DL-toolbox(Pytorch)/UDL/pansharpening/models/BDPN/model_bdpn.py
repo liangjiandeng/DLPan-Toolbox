@@ -3,19 +3,19 @@
 # All Rights Reserved
 # @Author  : Xiao Wu, Ran Ran, LiangJian Deng
 # @reference:
+
 import torch
 import torch.nn as nn
 import numpy as np
 import math
 import torch.nn.init as int
 import sys
-sys.path.append('/home/office-401-remote/桌面/Machine Learning/RanRan')
+
 # print(sys.path)
 import torch
 import torch.nn as nn
 import math
 from UDL.Basis.variance_sacling_initializer import variance_scaling_initializer
-from UDL.pansharpening.models import PanSharpeningModel
 
 # -------------Initialization----------------------------------------
 def init_weights(*modules):

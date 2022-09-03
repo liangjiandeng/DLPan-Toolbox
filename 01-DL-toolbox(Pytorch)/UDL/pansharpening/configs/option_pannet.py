@@ -43,7 +43,7 @@ class parser_args(TaskDispatcher, name='PanNet'):
                             choices=[None, 'wv2_hp', 'wv3_hp', 'wv4_hp', 'qb_hp',
                                      'TestData_qb_hp', 'TestData_wv2_hp', 'TestData_wv3_hp', 'TestData_wv4_hp',
                                      'San_Francisco_QB_RR_hp', 'San_Francisco_QB_FR_hp', 'NY1_WV3_FR_hp',
-                                     'NY1_WV3_RR', 'Alice_WV4_FR', 'Alice_WV4_RR_hp', 'Rio_WV2_FR_hp', 'Rio_WV2_RR_hp'],
+                                     'NY1_WV3_RR_hp', 'Alice_WV4_FR', 'Alice_WV4_RR_hp', 'Rio_WV2_FR_hp', 'Rio_WV2_RR_hp'],
                             help="performing evalution for patch2entire")
         parser.add_argument('--eval', default=False, type=bool,
                             help="performing evalution for patch2entire")
