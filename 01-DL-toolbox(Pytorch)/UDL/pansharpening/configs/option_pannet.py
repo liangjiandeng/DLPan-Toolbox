@@ -44,7 +44,9 @@ class parser_args(TaskDispatcher, name='PanNet'):
                                      'TestData_qb_hp', 'TestData_wv2_hp', 'TestData_wv3_hp', 'TestData_wv4_hp',
                                      'San_Francisco_QB_RR_hp', 'San_Francisco_QB_FR_hp', 'NY1_WV3_FR_hp',
                                      'NY1_WV3_RR_hp', 'Alice_WV4_FR', 'Alice_WV4_RR_hp', 'Rio_WV2_FR_hp', 'Rio_WV2_RR_hp'],
-                            help="performing evalution for patch2entire")
+                            help="training choices: ['wv2', 'wv3', 'wv4', 'qb'],"
+                                 "validation choices: ['valid_wv2_10000','valid_wv3_10000', 'valid_wv4_10000', 'valid_qb_10000']"
+                                 "test choices is ['TestData_wv2', 'TestData_wv3', 'TestData_wv4', 'TestData_qb'], and others with RR/FR")
         parser.add_argument('--eval', default=False, type=bool,
                             help="performing evalution for patch2entire")
 

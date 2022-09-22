@@ -42,7 +42,9 @@ class parser_args(TaskDispatcher, name='DiCNN1'):
                                      'TestData_qb', 'TestData_wv2', 'TestData_wv3', 'TestData_wv4',
                                      'San_Francisco_QB_RR', 'San_Francisco_QB_FR', 'NY1_WV3_FR',
                                      'NY1_WV3_RR', 'Alice_WV4_FR', 'Alice_WV4_RR', 'Rio_WV2_FR', 'Rio_WV2_RR'],
-                            help="performing evalution for patch2entire")
+                            help="training choices: ['wv2', 'wv3', 'wv4', 'qb'],"
+                                 "validation choices: ['valid_wv2_10000','valid_wv3_10000', 'valid_wv4_10000', 'valid_qb_10000']"
+                                 "test choices is ['TestData_wv2', 'TestData_wv3', 'TestData_wv4', 'TestData_qb'], and others with RR/FR")
         parser.add_argument('--eval', default=False, type=bool,
                             help="performing evalution for patch2entire")
 

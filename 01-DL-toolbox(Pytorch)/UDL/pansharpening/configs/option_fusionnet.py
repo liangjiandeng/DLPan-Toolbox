@@ -22,9 +22,9 @@ class parser_args(TaskDispatcher, name='FusionNet'):
                             help='path to save model')
         parser.add_argument('--mode', default=argparse.SUPPRESS, help='protective declare, please ignore it')
 
-        parser.add_argument('--lr', default=3e-4, type=float)  # 1e-4 2e-4 8
+        parser.add_argument('--lr', default=3e-4, type=float)
         # parser.add_argument('--lr_scheduler', default=True, type=bool)
-        parser.add_argument('--samples_per_gpu', default=32, type=int,  # 8
+        parser.add_argument('--samples_per_gpu', default=32, type=int,
                             metavar='N', help='mini-batch size (default: 256)')
         parser.add_argument('--print-freq', '-p', default=50, type=int,
                             metavar='N', help='print frequency (default: 10)')
@@ -39,12 +39,14 @@ class parser_args(TaskDispatcher, name='FusionNet'):
         ##
         parser.add_argument('--arch', '-a', metavar='ARCH', default='FusionNet', type=str,
                             choices=['PanNet', 'DiCNN', 'PNN', 'FusionNet'])
-        parser.add_argument('--dataset', default={'train': 'wv3', 'val': 'NY1_WV3_RR'}, type=str,
+        parser.add_argument('--dataset', default={'train': 'qb', 'val': 'valid_qb_10000'}, type=str,
                             choices=[None, 'wv2', 'wv3', 'wv4', 'qb',
                                      'TestData_qb', 'TestData_wv2', 'TestData_wv3', 'TestData_wv4',
                                      'San_Francisco_QB_RR', 'San_Francisco_QB_FR', 'NY1_WV3_FR',
                                      'NY1_WV3_RR', 'Alice_WV4_FR', 'Alice_WV4_RR', 'Rio_WV2_FR', 'Rio_WV2_RR'],
-                            help="performing evalution for patch2entire")
+                            help="training choices: ['wv2', 'wv3', 'wv4', 'qb'],"
+                                 "validation choices: ['valid_wv2_10000','valid_wv3_10000', 'valid_wv4_10000', 'valid_qb_10000']"
+                                 "test choices is ['TestData_wv2', 'TestData_wv3', 'TestData_wv4', 'TestData_qb'], and others with RR/FR")
         parser.add_argument('--eval', default=False, type=bool,
                             help="performing evalution for patch2entire")
 
