@@ -34,6 +34,10 @@ class Dataset_Pro(data.Dataset):
         pan1 = data['pan'][...]  # Nx1xHxW
         pan1 = np.array(pan1, dtype=np.float32) / img_scale # Nx1xHxW
         self.pan = torch.from_numpy(pan1)  # Nx1xHxW:
+
+        if 'valid' in file_path:
+            self.gt = self.gt.permute([0, 2, 3, 1])
+
         print(pan1.shape, lms1.shape, gt1.shape, ms1.shape)
     #####必要函数
     def __getitem__(self, index):

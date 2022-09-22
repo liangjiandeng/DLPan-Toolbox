@@ -25,11 +25,11 @@ class PansharpeningSession():
                 # high-pass filter
                 from UDL.pansharpening.common.dataset_hp import Dataset_Pro
                 dataset_name = dataset_name.split('_')[0] #'wv2_hp'
-                dataset = Dataset_Pro('/'.join([self.args.data_dir, 'training_data', f'train_{dataset_name}_10000.h5']), img_scale=self.args.img_range)
+                dataset = Dataset_Pro('/'.join([self.args.data_dir, dataset_name, f'train_{dataset_name}_10000.h5']), img_scale=self.args.img_range)
             else:
 
                 from UDL.pansharpening.common.dataset import Dataset_Pro
-                dataset = Dataset_Pro('/'.join([self.args.data_dir, 'training_data', f'train_{dataset_name}_10000.h5']), img_scale=self.args.img_range)
+                dataset = Dataset_Pro('/'.join([self.args.data_dir, dataset_name, f'train_{dataset_name}_10000.h5']), img_scale=self.args.img_range)
 
         else:
             print(f"train_{dataset_name} is not supported.")
@@ -48,37 +48,26 @@ class PansharpeningSession():
 
         return dataloaders, sampler
 
-    def get_test_dataloader(self, dataset_name, distributed):
-        # creat data for validation
-        if dataset_name in ['wv3', 'wv2', 'qb', 'gf2']:
-            from UDL.pansharpening.common.dataset_hp import Dataset_Pro
-            dataset = Dataset_Pro(
-                '/'.join([self.args.data_dir, 'validation_data', f'valid_{dataset_name}.h5']), img_scale=self.args.img_range)
-        else:
-            print(f"{dataset_name} is not supported.")
-            raise NotImplementedError
-
-        sampler = None
-        if distributed:
-            sampler = torch.utils.data.distributed.DistributedSampler(dataset)
-
-        if not dataset_name in self.dataloaders:
-            self.dataloaders = \
-                DataLoader(dataset, batch_size=self.samples_per_gpu, pin_memory=True,
-                           shuffle=False, num_workers=self.workers_per_gpu, drop_last=True, sampler=sampler)
-
-        return self.dataloaders, sampler
-
     def get_eval_dataloader(self, dataset_name, distributed):
 
-        if 'TestData' in dataset_name:
+        if 'valid' in dataset_name:
+            if "hp" in dataset_name:
+                from UDL.pansharpening.common.dataset_hp import Dataset_Pro
+                dataset = Dataset_Pro(
+                    '/'.join([self.args.data_dir, 'validation_data', f'{dataset_name}.h5']), img_scale=self.args.img_range)
+
+            else:
+                from UDL.pansharpening.common.dataset import Dataset_Pro
+                dataset = Dataset_Pro('/'.join([self.args.data_dir, 'validation_data', f'{dataset_name}.h5']), img_scale=self.args.img_range)
+
+        elif 'TestData' in dataset_name:
             if 'hp' in dataset_name:
                 satellite = dataset_name.split('_')[-2]
             else:
                 satellite = dataset_name.split('_')[-1]
 
             from UDL.pansharpening.evaluation.ps_evaluate import MultiExmTest_h5
-            dataset = MultiExmTest_h5('/'.join([self.args.data_dir, f"test_data/{satellite.upper()}/TestData_{dataset_name.replace('_hp', '')}"]),
+            dataset = MultiExmTest_h5('/'.join([self.args.data_dir, 'test_data', satellite.lower(), f"{dataset_name.replace('_hp', '')}.h5"]),
                                       dataset_name, img_scale=self.args.img_range)
 
         elif 'RR' in dataset_name or 'FR' in dataset_name:
@@ -90,8 +79,8 @@ class PansharpeningSession():
 
             from UDL.pansharpening.evaluation.ps_evaluate import SingleDataset
 
-            # mode, satellite = splits[-1], splits[2]
-            dataset = SingleDataset(['/'.join([self.args.data_dir, satellite, "test_data", dataset_name.replace('_hp', '')+".mat"])], dataset_name, img_scale=self.args.img_range)
+            dataset = SingleDataset(['/'.join([self.args.data_dir, 'test_data', satellite.lower(),
+                                               dataset_name.replace('_hp', '')+".mat"])], dataset_name, img_scale=self.args.img_range)
 
 
         else:
