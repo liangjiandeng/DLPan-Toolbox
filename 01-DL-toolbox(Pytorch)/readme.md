@@ -125,6 +125,7 @@ Then,
 
 > 4) train your model and infer your results, see __step2__ and __step3__ for details.
 
+> 5) save your model early, add or change `cfg.save_freq_print` and `cfg.save_top_k` in `UDL/pansharpening/configs/Option_modelName.py`. We set the default for it starting at epoch 5 and save models every 10 epochs.
 
 
 **Q2.** How to customize your datasets?
