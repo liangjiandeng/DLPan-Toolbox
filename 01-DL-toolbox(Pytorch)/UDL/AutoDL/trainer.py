@@ -153,7 +153,7 @@ def trainer(cfg, logger,
         if scheduler is not None:
             runner.register_lr_hook(dict(policy=scheduler.__class__.__name__[:-2], step=scheduler.step_size))
         runner.register_checkpoint_hook(
-            dict(type='ModelCheckpoint', indicator='loss', save_top_k=cfg.save_top_k, print_freq=10))
+            dict(type='ModelCheckpoint', indicator='loss', save_top_k=cfg.save_top_k, print_freq=cfg.save_print_freq))
         runner.register_optimizer_hook(dict(grad_clip=10))  # ExternOptimizer
         runner.register_timer_hook(dict(type='IterTimerHook'))
         log_config = [dict(type='TextLoggerHook')]

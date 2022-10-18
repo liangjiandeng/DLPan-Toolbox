@@ -75,6 +75,7 @@ def common_cfg():
     args.reset_lr = False
     args.amp_opt_level = 'O0' if args.amp == None else args.amp_opt_level
     args.save_top_k = 5
+    args.save_print_freq = 10
     args.start_epoch = 1
     assert args.accumulated_step > 0
     args.load_model_strict = True
@@ -97,9 +98,9 @@ class panshaprening_cfg(TaskDispatcher, name='pansharpening'):
 
         cfg.scale = [1]
         if platform.system() == 'Linux':
-            cfg.data_dir = '../Data/pansharpening'
+            cfg.data_dir = '/Datasets/pansharpening/DLPan'
         if platform.system() == "Windows":
-            cfg.data_dir = '../Data/pansharpening'
+            cfg.data_dir = 'D:/Datasets/pansharpening/DLPan'
 
         cfg.best_prec1 = 10000
         cfg.best_prec5 = 10000
