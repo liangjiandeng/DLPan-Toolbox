@@ -25,11 +25,11 @@ class PansharpeningSession():
                 # high-pass filter
                 from UDL.pansharpening.common.dataset_hp import Dataset_Pro
                 dataset_name = dataset_name.split('_')[0] #'wv2_hp'
-                dataset = Dataset_Pro('/'.join([self.args.data_dir, dataset_name, f'train_{dataset_name}_10000.h5']), img_scale=self.args.img_range)
+                dataset = Dataset_Pro('/'.join([self.args.data_dir, 'training_data', f'train_{dataset_name}_10000.h5']), img_scale=self.args.img_range)
             else:
 
                 from UDL.pansharpening.common.dataset import Dataset_Pro
-                dataset = Dataset_Pro('/'.join([self.args.data_dir, dataset_name, f'train_{dataset_name}_10000.h5']), img_scale=self.args.img_range)
+                dataset = Dataset_Pro('/'.join([self.args.data_dir, 'training_data', f'train_{dataset_name}_10000.h5']), img_scale=self.args.img_range)
 
         else:
             print(f"train_{dataset_name} is not supported.")
