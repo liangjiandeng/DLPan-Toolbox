@@ -1,6 +1,6 @@
 # DLPan-Toolbox
 
-This toolbox is related to the paper ``Machine Learning in Pansharpening: A Benchmark, from Shallow to Deep Networks, IEEE Geoscience and Remote Sensing Magazine, 2022`` (see the following reference [1]). Download: [[paper]](https://github.com/liangjiandeng/liangjiandeng.github.io/tree/master/papers/2022/review-grsm2022.pdf).
+* This toolbox is related to the paper ``Machine Learning in Pansharpening: A Benchmark, from Shallow to Deep Networks, IEEE Geoscience and Remote Sensing Magazine, 2022`` (see the following reference [1]). Download: [[paper]](https://github.com/liangjiandeng/liangjiandeng.github.io/tree/master/papers/2022/review-grsm2022.pdf).
 
 * This is a deep learning (DL) toolbox for pansharpening, which can be used for training and testing getting the comparison between traditional and DL methods.
  
