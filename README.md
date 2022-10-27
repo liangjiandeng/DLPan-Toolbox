@@ -19,9 +19,9 @@ Note that, readers also could check the structure and relationship of these two 
 
 
 ## Dataset
-Due to the copyright issue, the datasets used in this GRSM paper are not availabel. Therefore, we recommand authors to use the following dataset for multispectral pansharpening. The following dataset can be directly applied in our DLPan-Toolbox.
+Due to the copyright issue, the datasets used in this GRSM paper are not availabel. Therefore, we recommand readers to use the following dataset for multispectral pansharpening, both training and testing. The following dataset can be directly applied in our DLPan-Toolbox.
 
-- [[PanCollection](https://github.com/liangjiandeng/PanCollection)] for pansharpening
+- [[PanCollection](https://github.com/liangjiandeng/PanCollection)] for multispectral pansharpening
 - [[HyperPanCollection](https://github.com/liangjiandeng/HyperPanCollection)] for hyperspectral pansharpening
 
 
