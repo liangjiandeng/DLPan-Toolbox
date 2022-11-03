@@ -19,7 +19,7 @@ Note that, readers also could check the structure and relationship of these two 
 
 
 ## Dataset
-Due to the copyright issue, the datasets used in this GRSM paper are not available. Therefore, we recommend readers use the following dataset for pansharpening, both training and testing. The following dataset can be directly applied in our DLPan-Toolbox.
+Due to the copyright issue, the datasets used in this GRSM paper are not available. Therefore, we recommend readers use the following dataset for pansharpening, both training and testing. The following dataset can be directly applied in our DLPan-Toolbox (put the data to the director for training: 01-DL-toolbox(Pytorch)/UDL/Data/pansharpening/training_data/).
 
 - [[PanCollection](https://github.com/liangjiandeng/PanCollection)] for multispectral pansharpening
 - [[HyperPanCollection](https://github.com/liangjiandeng/HyperPanCollection)] for hyperspectral pansharpening
