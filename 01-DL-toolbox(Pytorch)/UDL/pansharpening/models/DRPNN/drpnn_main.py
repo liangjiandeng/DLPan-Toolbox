@@ -66,7 +66,7 @@ class build_drpnn(PanSharpeningModel, name='DRPNN'):
 
         scheduler = None
 
-        if any(["wv" in v for v in args.dataset.values()]):
+        if any(["wv" in v for v in cfg.dataset.values()]):
             spectral_num = 8
         else:
             spectral_num = 4

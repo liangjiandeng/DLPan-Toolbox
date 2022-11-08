@@ -266,8 +266,7 @@ decimal.getcontext().rounding = "ROUND_HALF_UP"
 n_digits = 6
 
 
-# panHrnet: 2.6565  |1.4651  | 0.98364  | 0.98024  | 0.98089-Q8
-def analysis_accu(img_base, img_out, ratio, flag_cut_bounds=True, dim_cut=1, choices=4):
+def analysis_accu(img_base, img_out, ratio, flag_cut_bounds=True, dim_cut=21, choices=4):
     if flag_cut_bounds:
         img_base = img_base[dim_cut - 1:-dim_cut, dim_cut - 1:-dim_cut, :]  #:
         img_out = img_out[dim_cut - 1:-dim_cut, dim_cut - 1:-dim_cut, :]  #:
@@ -310,11 +309,11 @@ def analysis_accu(img_base, img_out, ratio, flag_cut_bounds=True, dim_cut=1, cho
     ERGAS = 100 * (1 / ratio) * ((summ / chanel) ** 0.5)
 
     # 计算PSNR
-    mse = torch.mean((img_base - img_out) ** 2, 0)
-    mse = torch.mean(mse, 0)
-    rmse = mse ** 0.5
-    temp = torch.log(1 / rmse) / math.log(10)
-    PSNR = -20 * temp
+    # mse = torch.mean((img_base - img_out) ** 2, 0)
+    # mse = torch.mean(mse, 0)
+    # rmse = mse ** 0.5
+    # temp = torch.log(1 / rmse) / math.log(10)
+    PSNR = 10 * torch.log10(math.pow(1.0, 2) / torch.mean((img_out-img_base)**2, [0, 1]))
 
     # SSIM
     # img_base = img_base.permute(2, 0, 1)
@@ -435,5 +434,11 @@ def compare_index(A):
 
 
 if __name__ == "__main__":
-    a = np.zeros(shape=[256, 256])
-    print(a[:255, :255].shape)
+    # a = np.zeros(shape=[256, 256])
+    # print(a[:255, :255].shape)
+    from scipy import io as sio
+    ms = sio.loadmat('../../tests/I_MS.mat')['I_MS'] / 2047.0
+    gt = sio.loadmat('../../tests/I_GT.mat')['I_GT'] / 2047.0
+    ms = torch.from_numpy(ms).float() #* 2047.0
+    gt = torch.from_numpy(gt).float() #* 2047.0
+    print(analysis_accu(ms, gt, ratio=4, dim_cut=21))

@@ -216,11 +216,14 @@ class PanSharpeningModel(ModelDispatcher, name='pansharpening'):
     def val_step(self, *args, **kwargs):
         sr, gt = self.model.val_step(*args, **kwargs)
         result_our = torch.squeeze(sr).permute(1, 2, 0)
-        result_our = result_our * kwargs['img_range']
+        result_our = torch.clip(result_our, 0, 1)
+         # SAM: 20.65473, ERGAS: 11.63402,
+        # - Epoch(val) [1][1]	SAM: 20.61130, ERGAS: 11.53574, PSNR: 21.29319
         metrics = analysis_accu(gt.cuda().squeeze(0), result_our, 4)
+        result_our = result_our * kwargs['img_range']
 
-        if kwargs['idx'] not in [220, 231, 236, 469, 766, 914]:
-            if kwargs['save_fmt'] is not None:
-                save_results(kwargs['idx'], kwargs['save_dir'], kwargs['filename'], kwargs['save_fmt'], result_our)
+        if kwargs['save_fmt'] is not None:
+            save_results(kwargs['idx'], kwargs['save_dir'], kwargs['filename'], kwargs['save_fmt'], result_our)
+
         return {'log_vars': metrics}
 

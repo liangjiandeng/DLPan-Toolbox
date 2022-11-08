@@ -199,13 +199,13 @@ class SingleDataset(Dataset):
         test_lms, test_ms, test_pan, gt = self.dataset(file_path, self.img_scale)
 
         if 'hp' not in self.dataset_name:
-            return {'gt': (gt * self.img_scale),
+            return {'gt': gt,
                     'lms': test_lms,
                     'ms': test_ms,
                     'pan': test_pan.unsqueeze(dim=0),
                     'filename': file_path}
         else:
-            return {'gt': (gt * self.img_scale),
+            return {'gt': gt,
                     'lms': test_lms,
                     'ms': test_ms,
                     'pan': test_pan.unsqueeze(dim=0),
