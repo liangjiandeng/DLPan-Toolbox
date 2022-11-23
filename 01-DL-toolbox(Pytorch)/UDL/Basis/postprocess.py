@@ -224,25 +224,6 @@ def gen_grad_cam(image, feature, gradient):
     # 数值归一化
     cam -= torch.min(cam)
     cam /= (torch.max(cam) - torch.min(cam) + 1e-8)
-    # heatmap_10_stage3.0.fuse_layers.0.1.0
-    # cam = torch.where(cam > torch.max(cam) * 0.1, cam ** 0.4, cam)#10*torch.log1p
-    # cam = 0.5*cam ** 1.3
-    # cam = cam ** 0.8
-    # cam = torch.log1p(cam)
-    # cam = linstretch(cam.cpu().data.numpy() * 255)
-    # heatmap_12_stage3.0.fuse_layers.0.2.0
-    # cam = cam ** 0.8
-    # cam = torch.where(cam > torch.max(cam) * 0.5, cam, 0 * cam)
-    #########################
-    # heatmap_12_stage3.0.fuse_layers.1.2.0
-    # cam = torch.tanh(cam)
-    # cam = torch.where(cam > torch.max(cam) * 0.5, cam, 0.0001 * cam)
-    # cam -= torch.min(cam)
-    # cam /= (torch.max(cam) - torch.min(cam) + 1e-8)
-    ######################
-    # cam = torch.where(cam > torch.max(cam) * 0.5, cam, 0.0001 * cam)
-
-    # cam = torch.sigmoid(cam)
 
     return cam.cpu().data.numpy()
 
@@ -318,8 +299,6 @@ def linstretch(images, tol=None):
         images = np.expand_dims(images, axis=-1)
         h, w, channels = images.shape
     N = h * w
-    # 1366 201 9 11   27   34   53   84   95  148  170  190  210  241  324  369  429  491  470  474  461  4
-    # 1365 200
     for c in range(channels):
         image = np.float32(np.round(images[:, :, c])).reshape(N, 1)
         hb, levelb = np.histogram(image, bins=math.ceil(image.max() - image.min()))
