@@ -1,5 +1,5 @@
 # GPL License
-# Copyright (C) 2021 , UESTC
+# Copyright (C) UESTC
 # All Rights Reserved
 # @Author  : Xiao Wu, LiangJian Deng
 # @reference:
@@ -9,7 +9,7 @@ from UDL.Basis.config import Config
 import warnings
 import scipy.io as sio
 
-class TaskDispatcher(object):
+class TaskDispatcher(Config):
     _task = dict()
 
     def __init_subclass__(cls, name='', **kwargs):
@@ -37,23 +37,23 @@ class TaskDispatcher(object):
 
         return instance
 
-    def __len__(self):
-        return len(self._cfg_dict)
-
-    def __getattr__(self, name):
-        return getattr(self._cfg_dict, name)
-
-    def __delattr__(self, name):
-        return delattr(self._cfg_dict, name)
-
-    def __getitem__(self, name):
-        return self._cfg_dict.__getitem__(name)
-
-    def __iter__(self):
-        return iter(self._cfg_dict)
-
-    def __repr__(self):
-        return f'TaskDispatcher {self._cfg_dict.__repr__()}'
+    # def __len__(self):
+    #     return len(self._cfg_dict)
+    #
+    # def __getattr__(self, name):
+    #     return getattr(self._cfg_dict, name)
+    #
+    # def __delattr__(self, name):
+    #     return delattr(self._cfg_dict, name)
+    #
+    # def __getitem__(self, name):
+    #     return self._cfg_dict.__getitem__(name)
+    #
+    # def __iter__(self):
+    #     return iter(self._cfg_dict)
+    #
+    # def __repr__(self):
+    #     return f'TaskDispatcher {self._cfg_dict.__repr__()}'
 
     # def __setattr__(self, name, value):
     #     if isinstance(value, dict):

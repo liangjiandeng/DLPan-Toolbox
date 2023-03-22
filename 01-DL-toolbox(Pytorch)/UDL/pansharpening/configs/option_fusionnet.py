@@ -5,7 +5,7 @@ import os
 
 class parser_args(TaskDispatcher, name='FusionNet'):
     def __init__(self, cfg=None):
-
+        super(parser_args, self).__init__()
         if cfg is None:
             from UDL.Basis.option import panshaprening_cfg
             cfg = panshaprening_cfg()
@@ -39,7 +39,7 @@ class parser_args(TaskDispatcher, name='FusionNet'):
         ##
         parser.add_argument('--arch', '-a', metavar='ARCH', default='FusionNet', type=str,
                             choices=['PanNet', 'DiCNN', 'PNN', 'FusionNet'])
-        parser.add_argument('--dataset', default={'train': 'qb', 'val': 'valid_qb_10000'}, type=str,
+        parser.add_argument('--dataset', default={'train': 'wv3', 'val': 'NY1_WV3_RR'}, type=str,
                             choices=[None, 'wv2', 'wv3', 'wv4', 'qb',
                                      'TestData_qb', 'TestData_wv2', 'TestData_wv3', 'TestData_wv4',
                                      'San_Francisco_QB_RR', 'San_Francisco_QB_FR', 'NY1_WV3_FR',
@@ -57,9 +57,9 @@ class parser_args(TaskDispatcher, name='FusionNet'):
         cfg.merge_args2cfg(args)
         cfg.save_fmt = "mat"
         # cfg.workflow = [('train', 10), ('val', 1)]
-        cfg.workflow = [('train', 1)]
+        cfg.workflow = [('val', 1), ('train', 1)]
         # cfg.config = f"{script_path}/configs/hook_configs.py"
         cfg.use_tfb = False
         cfg.img_range = 2047.0#1023.0
 
-        self._cfg_dict = cfg
+        self.merge_from_dict(cfg)

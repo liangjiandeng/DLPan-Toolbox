@@ -1,5 +1,5 @@
 # GPL License
-# Copyright (C) 2021 , UESTC
+# Copyright (C) UESTC
 # All Rights Reserved
 # @Author  : Xiao Wu, LiangJian Deng
 # @reference:

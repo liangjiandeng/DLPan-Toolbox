@@ -1,8 +1,9 @@
-
+*.log
 *.pyc
 *.xml
-/DLPan-Toolbox/01-DL-toolbox(Pytorch)/results/*
-bak/*
-*.log
 *.json
 *.mat
+*.eps
+*.cpython-37.pyc
+/DLPan-Toolbox/01-DL-toolbox(Pytorch)/results/*
+/bak/*

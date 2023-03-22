@@ -5,6 +5,7 @@ import os
 
 class parser_args(TaskDispatcher, name='PNN'):
     def __init__(self, cfg=None):
+        super(parser_args, self).__init__()
         if cfg is None:
             from UDL.Basis.option import panshaprening_cfg
             cfg = panshaprening_cfg()
@@ -53,4 +54,4 @@ class parser_args(TaskDispatcher, name='PNN'):
         cfg.workflow = [('train', 1)]
         cfg.img_range = 2047.0
         print(cfg.pretty_text)
-        self._cfg_dict = cfg
+        self.merge_from_dict(cfg)
