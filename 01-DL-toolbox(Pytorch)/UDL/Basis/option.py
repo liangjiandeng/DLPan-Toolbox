@@ -100,7 +100,7 @@ class panshaprening_cfg(TaskDispatcher, name='pansharpening'):
             cfg = common_cfg()
 
         cfg.scale = [1]
-        if cfg.data_dir == ''
+        if cfg.data_dir == '':
             if platform.system() == 'Linux':
                 cfg.data_dir = '/Datasets/pansharpening/DLPan'
             if platform.system() == "Windows":
