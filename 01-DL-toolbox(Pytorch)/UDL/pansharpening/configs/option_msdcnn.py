@@ -43,7 +43,7 @@ class parser_args(TaskDispatcher, name='MSDCNN'):
                             help="training choices: ['wv2', 'wv3', 'wv4', 'qb'],"
                                  "validation choices: ['valid_wv2_10000','valid_wv3_10000', 'valid_wv4_10000', 'valid_qb_10000']"
                                  "test choices is ['TestData_wv2', 'TestData_wv3', 'TestData_wv4', 'TestData_qb'], and others with RR/FR")
-        parser.add_argument('--eval', default=True, type=bool,
+        parser.add_argument('--eval', default=False, type=bool,
                             help="performing evalution for patch2entire")
 
         args = parser.parse_args()
