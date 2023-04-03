@@ -67,8 +67,9 @@ def common_cfg():
     parser.add_argument('--task', type=str, default=None,
                         help='dataset file extension')
     parser.add_argument('--arch', type=str, default='',
-                        help='dataset file extension')
-
+                        help='arch')
+    parser.add_argument('--data_dir', type=str, default='',
+                        help='root path for dataset')
     args = parser.parse_args()
     args.global_rank = 0
     args.once_epoch = False
@@ -99,11 +100,14 @@ class panshaprening_cfg(TaskDispatcher, name='pansharpening'):
             cfg = common_cfg()
 
         cfg.scale = [1]
-        if platform.system() == 'Linux':
-            cfg.data_dir = '/Datasets/pansharpening/DLPan'
-        if platform.system() == "Windows":
-            cfg.data_dir = 'D:/Datasets/pansharpening/DLPan'
-
+        if cfg.data_dir == ''
+            if platform.system() == 'Linux':
+                cfg.data_dir = '/Datasets/pansharpening/DLPan'
+            if platform.system() == "Windows":
+                cfg.data_dir = 'D:/Datasets/pansharpening/DLPan'
+        else:
+            raise ValueError(f"'cfg.data_dir={cfg.data_dir}' is empty. ")
+        
         cfg.best_prec1 = 10000
         cfg.best_prec5 = 10000
         cfg.metrics = 'loss'
