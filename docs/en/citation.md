@@ -1,13 +1,5 @@
-## Cite PanCollecton
-If PanCollection is helpful for you,  you are encouraged to cite the following paper:
-```bibtex
-@misc{PanCollection,
-    author = {Xiao Wu, Liang-Jian Deng and Ran Ran},
-    title = {"PanCollection" for Remote Sensing Pansharpening},
-    url = {https://github.com/XiaoXiao-Woo/PanCollection/},
-    year = {2022},
-}
-```
+## Cite DLPan-Toolbox
+If DLPan-Toolbox is helpful for you,  you are encouraged to cite the following paper:
 ```bibtex
 @ARTICLE{deng2022grsm,
 author={L.-J. Deng, G. Vivone, M. E. Paoletti, G. Scarpa, J. He, Y. Zhang, J. Chanussot, and A. Plaza},
@@ -18,19 +10,7 @@ pages={2-38},
 doi={10.1109/MGRS.2020.3019315}
 }
 ```
-For Chinese Paper,
-```bibtex
-@ARTICLE{dengjig2022,
-	author={邓良剑，冉燃，吴潇，张添敬},
-	journal={中国图象图形学报},
-	title={遥感图像全色锐化的卷积神经网络方法研究进展},
- 	year={2022},
-  	volume={},
-  	number={9},
-  	pages={},
-  	doi={10.11834/jig.220540}
-   }
-```
+
 Also, the codes of traditional methods are from the "pansharpening toolbox for distribution", thus please cite the corresponding paper:
 ```bibtex
 @ARTICLE{vivone2021grsm,
